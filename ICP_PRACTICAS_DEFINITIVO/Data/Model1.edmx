@@ -1,0 +1,1560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MeetFeverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Emoticono">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emoji" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nick" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Constrasena" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" Nullable="false" />
+          <Property Name="Id_Perfil" Type="int" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="varchar" MaxLength="100" />
+          <Property Name="Cif" Type="varchar" MaxLength="9" />
+          <Property Name="Direccion_Facturacion" Type="varchar" MaxLength="100" />
+          <Property Name="Direccion_Fiscal" Type="varchar" MaxLength="100" />
+          <Property Name="Nombre_Persona" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido1_Persona" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido2_Persona" Type="varchar" MaxLength="50" />
+          <Property Name="Dni_Persona" Type="varchar" MaxLength="9" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Entrada_Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Persona" Type="int" Nullable="false" />
+          <Property Name="Id_Experiencia" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="Dni" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Experiencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="Fecha_Celebracion" Type="datetime" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Aforo" Type="int" Nullable="false" />
+          <Property Name="Foto" Type="nvarchar(max)" />
+          <Property Name="Id_Empresa" Type="int" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MeGusta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Opinion" Type="int" />
+          <Property Name="Id_Usuario" Type="int" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Opinion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Emoticono" Type="int" Nullable="false" />
+          <Property Name="Id_Autor" Type="int" Nullable="false" />
+          <Property Name="Id_Empresa" Type="int" />
+          <Property Name="Id_Experiencia" Type="int" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cargo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dni" Type="varchar" MaxLength="9" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido1" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="Sexo" Type="int" />
+          <Property Name="Fecha_Nacimiento" Type="date" />
+          <Property Name="Eliminado" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Registro">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Excepcion" />
+            <PropertyRef Name="Aplicacion_Fuente" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Excepcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Aplicacion_Fuente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Seguidor_Seguido">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Seguidor" Type="int" Nullable="false" />
+          <Property Name="Seguido" Type="int" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIDA_EMPRESA_PRUEBA_GONZALO">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="nombre_empresa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cif" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIDA_PERSONA_PRUEBA_GONZALO">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_nacimiento" Type="date" />
+        </EntityType>
+        <EntityType Name="SIDA_USUARIO_PRUEBA_GONZALO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contrasena" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nickname" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nick" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Foto_Perfil" Type="nvarchar(max)" />
+          <Property Name="Foto_Fondo" Type="nvarchar(max)" />
+          <Property Name="Telefono" Type="varchar" MaxLength="9" />
+          <Property Name="Frase" Type="varchar" MaxLength="255" />
+          <Property Name="Eliminado" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Empleado__Id_Car__3A4CA8FD">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__Id_Emp__395884C4">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__Id__31B762FC">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrada_P__Id_Ex__540C7B00">
+          <End Role="Experiencia" Type="Self.Experiencia" Multiplicity="1" />
+          <End Role="Entrada_Persona" Type="Self.Entrada_Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experiencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entrada_Persona">
+              <PropertyRef Name="Id_Experiencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrada_P__Id_Pe__531856C7">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Entrada_Persona" Type="Self.Entrada_Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entrada_Persona">
+              <PropertyRef Name="Id_Persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MeGusta__Id_Opin__4F47C5E3">
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="0..1" />
+          <End Role="MeGusta" Type="Self.MeGusta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opinion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeGusta">
+              <PropertyRef Name="Id_Opinion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MeGusta__Id_Usua__4E53A1AA">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="MeGusta" Type="Self.MeGusta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeGusta">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Emotico__45BE5BA9">
+          <End Role="Emoticono" Type="Self.Emoticono" Multiplicity="1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emoticono">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Emoticono" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Id_Auto__43D61337">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Id_Autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Id_Empr__42E1EEFE">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Id_Expe__44CA3770">
+          <End Role="Experiencia" Type="Self.Experiencia" Multiplicity="0..1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experiencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Id_Experiencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__Id__2BFE89A6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__Sexo__2DE6D218">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="Sexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguidor___Segui__498EEC8D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguidor_Seguido" Type="Self.Seguidor_Seguido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seguidor_Seguido">
+              <PropertyRef Name="Seguidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguidor___Segui__4A8310C6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguidor_Seguido" Type="Self.Seguidor_Seguido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seguidor_Seguido">
+              <PropertyRef Name="Seguido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SIDA_EMPR__id_us__45F365D3">
+          <End Role="SIDA_USUARIO_PRUEBA_GONZALO" Type="Self.SIDA_USUARIO_PRUEBA_GONZALO" Multiplicity="1" />
+          <End Role="SIDA_EMPRESA_PRUEBA_GONZALO" Type="Self.SIDA_EMPRESA_PRUEBA_GONZALO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SIDA_USUARIO_PRUEBA_GONZALO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SIDA_EMPRESA_PRUEBA_GONZALO">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SIDA_PERS__id_us__44FF419A">
+          <End Role="SIDA_USUARIO_PRUEBA_GONZALO" Type="Self.SIDA_USUARIO_PRUEBA_GONZALO" Multiplicity="1" />
+          <End Role="SIDA_PERSONA_PRUEBA_GONZALO" Type="Self.SIDA_PERSONA_PRUEBA_GONZALO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SIDA_USUARIO_PRUEBA_GONZALO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SIDA_PERSONA_PRUEBA_GONZALO">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="PA_Borrado_Logico_Emoticono_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Empleado_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Empresa_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Experiencia_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_logico_MeGusta_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Opinion_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Perfil_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Persona_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_seguidor_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Logico_Sexo_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Insertar_Registro_De_Error" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Empresa_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Persona_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Usuarios_Por_ID_Con_Fotos_Pruebas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Usuarios_Por_ID_Pruebas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="SIDA_PA_CHUNGO_GONZALO_EJEMPLO_ALBERTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="SIDA_PA_OBTENER_TODAS_LAS_EMPRESAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="MeetFeverModelStoreContainer">
+          <EntitySet Name="Emoticono" EntityType="Self.Emoticono" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrada_Persona" EntityType="Self.Entrada_Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Experiencia" EntityType="Self.Experiencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeGusta" EntityType="Self.MeGusta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opinion" EntityType="Self.Opinion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seguidor_Seguido" EntityType="Self.Seguidor_Seguido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIDA_EMPRESA_PRUEBA_GONZALO" EntityType="Self.SIDA_EMPRESA_PRUEBA_GONZALO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIDA_PERSONA_PRUEBA_GONZALO" EntityType="Self.SIDA_PERSONA_PRUEBA_GONZALO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIDA_USUARIO_PRUEBA_GONZALO" EntityType="Self.SIDA_USUARIO_PRUEBA_GONZALO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registro" EntityType="Self.Registro" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Registro].[Id] AS [Id], 
+    [Registro].[Excepcion] AS [Excepcion], 
+    [Registro].[Aplicacion_Fuente] AS [Aplicacion_Fuente]
+    FROM [dbo].[Registro] AS [Registro]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Empleado__Id_Car__3A4CA8FD" Association="Self.FK__Empleado__Id_Car__3A4CA8FD">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__Id_Emp__395884C4" Association="Self.FK__Empleado__Id_Emp__395884C4">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__Id__31B762FC" Association="Self.FK__Empresa__Id__31B762FC">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrada_P__Id_Ex__540C7B00" Association="Self.FK__Entrada_P__Id_Ex__540C7B00">
+            <End Role="Experiencia" EntitySet="Experiencia" />
+            <End Role="Entrada_Persona" EntitySet="Entrada_Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrada_P__Id_Pe__531856C7" Association="Self.FK__Entrada_P__Id_Pe__531856C7">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Entrada_Persona" EntitySet="Entrada_Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MeGusta__Id_Opin__4F47C5E3" Association="Self.FK__MeGusta__Id_Opin__4F47C5E3">
+            <End Role="Opinion" EntitySet="Opinion" />
+            <End Role="MeGusta" EntitySet="MeGusta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MeGusta__Id_Usua__4E53A1AA" Association="Self.FK__MeGusta__Id_Usua__4E53A1AA">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="MeGusta" EntitySet="MeGusta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Emotico__45BE5BA9" Association="Self.FK__Opinion__Emotico__45BE5BA9">
+            <End Role="Emoticono" EntitySet="Emoticono" />
+            <End Role="Opinion" EntitySet="Opinion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Id_Auto__43D61337" Association="Self.FK__Opinion__Id_Auto__43D61337">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Opinion" EntitySet="Opinion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Id_Empr__42E1EEFE" Association="Self.FK__Opinion__Id_Empr__42E1EEFE">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Opinion" EntitySet="Opinion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Id_Expe__44CA3770" Association="Self.FK__Opinion__Id_Expe__44CA3770">
+            <End Role="Experiencia" EntitySet="Experiencia" />
+            <End Role="Opinion" EntitySet="Opinion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__Id__2BFE89A6" Association="Self.FK__Persona__Id__2BFE89A6">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__Sexo__2DE6D218" Association="Self.FK__Persona__Sexo__2DE6D218">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguidor___Segui__498EEC8D" Association="Self.FK__Seguidor___Segui__498EEC8D">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguidor_Seguido" EntitySet="Seguidor_Seguido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguidor___Segui__4A8310C6" Association="Self.FK__Seguidor___Segui__4A8310C6">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Seguidor_Seguido" EntitySet="Seguidor_Seguido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SIDA_EMPR__id_us__45F365D3" Association="Self.FK__SIDA_EMPR__id_us__45F365D3">
+            <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
+            <End Role="SIDA_EMPRESA_PRUEBA_GONZALO" EntitySet="SIDA_EMPRESA_PRUEBA_GONZALO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SIDA_PERS__id_us__44FF419A" Association="Self.FK__SIDA_PERS__id_us__44FF419A">
+            <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
+            <End Role="SIDA_PERSONA_PRUEBA_GONZALO" EntitySet="SIDA_PERSONA_PRUEBA_GONZALO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MeetFeverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Emoticono">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emoji" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Opinions" Relationship="Self.FK__Opinion__Emotico__45BE5BA9" FromRole="Emoticono" ToRole="Opinion" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nick" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Constrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="Id_Perfil" Type="Int32" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK__Empleado__Id_Car__3A4CA8FD" FromRole="Empleado" ToRole="Perfil" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Empleado__Id_Emp__395884C4" FromRole="Empleado" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cif" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion_Facturacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion_Fiscal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido1_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido2_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dni_Persona" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK__Empleado__Id_Emp__395884C4" FromRole="Empresa" ToRole="Empleado" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Empresa__Id__31B762FC" FromRole="Empresa" ToRole="Usuario" />
+          <NavigationProperty Name="Opinions" Relationship="Self.FK__Opinion__Id_Empr__42E1EEFE" FromRole="Empresa" ToRole="Opinion" />
+        </EntityType>
+        <EntityType Name="Entrada_Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Persona" Type="Int32" Nullable="false" />
+          <Property Name="Id_Experiencia" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dni" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Experiencia" Relationship="Self.FK__Entrada_P__Id_Ex__540C7B00" FromRole="Entrada_Persona" ToRole="Experiencia" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Entrada_P__Id_Pe__531856C7" FromRole="Entrada_Persona" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Experiencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Celebracion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Precio" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Aforo" Type="Int32" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_Empresa" Type="Int32" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Entrada_Persona" Relationship="Self.FK__Entrada_P__Id_Ex__540C7B00" FromRole="Experiencia" ToRole="Entrada_Persona" />
+          <NavigationProperty Name="Opinions" Relationship="Self.FK__Opinion__Id_Expe__44CA3770" FromRole="Experiencia" ToRole="Opinion" />
+        </EntityType>
+        <EntityType Name="MeGusta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Opinion" Type="Int32" />
+          <Property Name="Id_Usuario" Type="Int32" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="Opinion" Relationship="Self.FK__MeGusta__Id_Opin__4F47C5E3" FromRole="MeGusta" ToRole="Opinion" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__MeGusta__Id_Usua__4E53A1AA" FromRole="MeGusta" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Opinion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Emoticono" Type="Int32" Nullable="false" />
+          <Property Name="Id_Autor" Type="Int32" Nullable="false" />
+          <Property Name="Id_Empresa" Type="Int32" />
+          <Property Name="Id_Experiencia" Type="Int32" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Emoticono1" Relationship="Self.FK__Opinion__Emotico__45BE5BA9" FromRole="Opinion" ToRole="Emoticono" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Opinion__Id_Empr__42E1EEFE" FromRole="Opinion" ToRole="Empresa" />
+          <NavigationProperty Name="Experiencia" Relationship="Self.FK__Opinion__Id_Expe__44CA3770" FromRole="Opinion" ToRole="Experiencia" />
+          <NavigationProperty Name="MeGustas" Relationship="Self.FK__MeGusta__Id_Opin__4F47C5E3" FromRole="Opinion" ToRole="MeGusta" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Opinion__Id_Auto__43D61337" FromRole="Opinion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cargo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empleadoes" Relationship="Self.FK__Empleado__Id_Car__3A4CA8FD" FromRole="Perfil" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dni" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sexo" Type="Int32" />
+          <Property Name="Fecha_Nacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Eliminado" Type="Boolean" />
+          <NavigationProperty Name="Entrada_Persona" Relationship="Self.FK__Entrada_P__Id_Pe__531856C7" FromRole="Persona" ToRole="Entrada_Persona" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Persona__Id__2BFE89A6" FromRole="Persona" ToRole="Usuario" />
+          <NavigationProperty Name="Sexo1" Relationship="Self.FK__Persona__Sexo__2DE6D218" FromRole="Persona" ToRole="Sexo" />
+        </EntityType>
+        <EntityType Name="Seguidor_Seguido">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seguidor" Type="Int32" Nullable="false" />
+          <Property Name="Seguido" Type="Int32" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Seguidor___Segui__498EEC8D" FromRole="Seguidor_Seguido" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Seguidor___Segui__4A8310C6" FromRole="Seguidor_Seguido" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sexo1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK__Persona__Sexo__2DE6D218" FromRole="Sexo" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="SIDA_EMPRESA_PRUEBA_GONZALO">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="nombre_empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cif" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SIDA_USUARIO_PRUEBA_GONZALO" Relationship="Self.FK__SIDA_EMPR__id_us__45F365D3" FromRole="SIDA_EMPRESA_PRUEBA_GONZALO" ToRole="SIDA_USUARIO_PRUEBA_GONZALO" />
+        </EntityType>
+        <EntityType Name="SIDA_PERSONA_PRUEBA_GONZALO">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="SIDA_USUARIO_PRUEBA_GONZALO" Relationship="Self.FK__SIDA_PERS__id_us__44FF419A" FromRole="SIDA_PERSONA_PRUEBA_GONZALO" ToRole="SIDA_USUARIO_PRUEBA_GONZALO" />
+        </EntityType>
+        <EntityType Name="SIDA_USUARIO_PRUEBA_GONZALO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contrasena" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SIDA_EMPRESA_PRUEBA_GONZALO" Relationship="Self.FK__SIDA_EMPR__id_us__45F365D3" FromRole="SIDA_USUARIO_PRUEBA_GONZALO" ToRole="SIDA_EMPRESA_PRUEBA_GONZALO" />
+          <NavigationProperty Name="SIDA_PERSONA_PRUEBA_GONZALO" Relationship="Self.FK__SIDA_PERS__id_us__44FF419A" FromRole="SIDA_USUARIO_PRUEBA_GONZALO" ToRole="SIDA_PERSONA_PRUEBA_GONZALO" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Correo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nick" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Foto_Perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Foto_Fondo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Frase" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Empresa__Id__31B762FC" FromRole="Usuario" ToRole="Empresa" />
+          <NavigationProperty Name="MeGustas" Relationship="Self.FK__MeGusta__Id_Usua__4E53A1AA" FromRole="Usuario" ToRole="MeGusta" />
+          <NavigationProperty Name="Opinions" Relationship="Self.FK__Opinion__Id_Auto__43D61337" FromRole="Usuario" ToRole="Opinion" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK__Persona__Id__2BFE89A6" FromRole="Usuario" ToRole="Persona" />
+          <NavigationProperty Name="Seguidor_Seguido" Relationship="Self.FK__Seguidor___Segui__498EEC8D" FromRole="Usuario" ToRole="Seguidor_Seguido" />
+          <NavigationProperty Name="Seguidor_Seguido1" Relationship="Self.FK__Seguidor___Segui__4A8310C6" FromRole="Usuario" ToRole="Seguidor_Seguido" />
+        </EntityType>
+        <EntityType Name="Registro">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Excepcion" />
+            <PropertyRef Name="Aplicacion_Fuente" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Excepcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aplicacion_Fuente" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Opinion__Emotico__45BE5BA9">
+          <End Role="Emoticono" Type="Self.Emoticono" Multiplicity="1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Emoticono">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Emoticono" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__Id_Car__3A4CA8FD">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleado__Id_Emp__395884C4">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__Id__31B762FC">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Id_Empr__42E1EEFE">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrada_P__Id_Ex__540C7B00">
+          <End Role="Experiencia" Type="Self.Experiencia" Multiplicity="1" />
+          <End Role="Entrada_Persona" Type="Self.Entrada_Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experiencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entrada_Persona">
+              <PropertyRef Name="Id_Experiencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Entrada_P__Id_Pe__531856C7">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Entrada_Persona" Type="Self.Entrada_Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entrada_Persona">
+              <PropertyRef Name="Id_Persona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Id_Expe__44CA3770">
+          <End Role="Experiencia" Type="Self.Experiencia" Multiplicity="0..1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Experiencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Id_Experiencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MeGusta__Id_Opin__4F47C5E3">
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="0..1" />
+          <End Role="MeGusta" Type="Self.MeGusta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opinion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeGusta">
+              <PropertyRef Name="Id_Opinion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MeGusta__Id_Usua__4E53A1AA">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="MeGusta" Type="Self.MeGusta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MeGusta">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Opinion__Id_Auto__43D61337">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Opinion">
+              <PropertyRef Name="Id_Autor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__Id__2BFE89A6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Persona__Sexo__2DE6D218">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="Sexo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguidor___Segui__498EEC8D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguidor_Seguido" Type="Self.Seguidor_Seguido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seguidor_Seguido">
+              <PropertyRef Name="Seguidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Seguidor___Segui__4A8310C6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Seguidor_Seguido" Type="Self.Seguidor_Seguido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Seguidor_Seguido">
+              <PropertyRef Name="Seguido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SIDA_EMPR__id_us__45F365D3">
+          <End Role="SIDA_USUARIO_PRUEBA_GONZALO" Type="Self.SIDA_USUARIO_PRUEBA_GONZALO" Multiplicity="1" />
+          <End Role="SIDA_EMPRESA_PRUEBA_GONZALO" Type="Self.SIDA_EMPRESA_PRUEBA_GONZALO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SIDA_USUARIO_PRUEBA_GONZALO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SIDA_EMPRESA_PRUEBA_GONZALO">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SIDA_PERS__id_us__44FF419A">
+          <End Role="SIDA_USUARIO_PRUEBA_GONZALO" Type="Self.SIDA_USUARIO_PRUEBA_GONZALO" Multiplicity="1" />
+          <End Role="SIDA_PERSONA_PRUEBA_GONZALO" Type="Self.SIDA_PERSONA_PRUEBA_GONZALO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SIDA_USUARIO_PRUEBA_GONZALO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SIDA_PERSONA_PRUEBA_GONZALO">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MeetFeverDatos" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Emoticonoes" EntityType="Self.Emoticono" />
+          <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresa" />
+          <EntitySet Name="Entrada_Persona" EntityType="Self.Entrada_Persona" />
+          <EntitySet Name="Experiencias" EntityType="Self.Experiencia" />
+          <EntitySet Name="MeGustas" EntityType="Self.MeGusta" />
+          <EntitySet Name="Opinions" EntityType="Self.Opinion" />
+          <EntitySet Name="Perfils" EntityType="Self.Perfil" />
+          <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="Seguidor_Seguido" EntityType="Self.Seguidor_Seguido" />
+          <EntitySet Name="Sexoes" EntityType="Self.Sexo" />
+          <EntitySet Name="SIDA_EMPRESA_PRUEBA_GONZALO" EntityType="Self.SIDA_EMPRESA_PRUEBA_GONZALO" />
+          <EntitySet Name="SIDA_PERSONA_PRUEBA_GONZALO" EntityType="Self.SIDA_PERSONA_PRUEBA_GONZALO" />
+          <EntitySet Name="SIDA_USUARIO_PRUEBA_GONZALO" EntityType="Self.SIDA_USUARIO_PRUEBA_GONZALO" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Registroes" EntityType="Self.Registro" />
+          <AssociationSet Name="FK__Opinion__Emotico__45BE5BA9" Association="Self.FK__Opinion__Emotico__45BE5BA9">
+            <End Role="Emoticono" EntitySet="Emoticonoes" />
+            <End Role="Opinion" EntitySet="Opinions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__Id_Car__3A4CA8FD" Association="Self.FK__Empleado__Id_Car__3A4CA8FD">
+            <End Role="Perfil" EntitySet="Perfils" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleado__Id_Emp__395884C4" Association="Self.FK__Empleado__Id_Emp__395884C4">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Empleado" EntitySet="Empleadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__Id__31B762FC" Association="Self.FK__Empresa__Id__31B762FC">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Empresa" EntitySet="Empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Id_Empr__42E1EEFE" Association="Self.FK__Opinion__Id_Empr__42E1EEFE">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Opinion" EntitySet="Opinions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrada_P__Id_Ex__540C7B00" Association="Self.FK__Entrada_P__Id_Ex__540C7B00">
+            <End Role="Experiencia" EntitySet="Experiencias" />
+            <End Role="Entrada_Persona" EntitySet="Entrada_Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Entrada_P__Id_Pe__531856C7" Association="Self.FK__Entrada_P__Id_Pe__531856C7">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Entrada_Persona" EntitySet="Entrada_Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Id_Expe__44CA3770" Association="Self.FK__Opinion__Id_Expe__44CA3770">
+            <End Role="Experiencia" EntitySet="Experiencias" />
+            <End Role="Opinion" EntitySet="Opinions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MeGusta__Id_Opin__4F47C5E3" Association="Self.FK__MeGusta__Id_Opin__4F47C5E3">
+            <End Role="Opinion" EntitySet="Opinions" />
+            <End Role="MeGusta" EntitySet="MeGustas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MeGusta__Id_Usua__4E53A1AA" Association="Self.FK__MeGusta__Id_Usua__4E53A1AA">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="MeGusta" EntitySet="MeGustas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Opinion__Id_Auto__43D61337" Association="Self.FK__Opinion__Id_Auto__43D61337">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Opinion" EntitySet="Opinions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__Id__2BFE89A6" Association="Self.FK__Persona__Id__2BFE89A6">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Persona" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Persona__Sexo__2DE6D218" Association="Self.FK__Persona__Sexo__2DE6D218">
+            <End Role="Sexo" EntitySet="Sexoes" />
+            <End Role="Persona" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguidor___Segui__498EEC8D" Association="Self.FK__Seguidor___Segui__498EEC8D">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Seguidor_Seguido" EntitySet="Seguidor_Seguido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Seguidor___Segui__4A8310C6" Association="Self.FK__Seguidor___Segui__4A8310C6">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Seguidor_Seguido" EntitySet="Seguidor_Seguido" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SIDA_EMPR__id_us__45F365D3" Association="Self.FK__SIDA_EMPR__id_us__45F365D3">
+            <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
+            <End Role="SIDA_EMPRESA_PRUEBA_GONZALO" EntitySet="SIDA_EMPRESA_PRUEBA_GONZALO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SIDA_PERS__id_us__44FF419A" Association="Self.FK__SIDA_PERS__id_us__44FF419A">
+            <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
+            <End Role="SIDA_PERSONA_PRUEBA_GONZALO" EntitySet="SIDA_PERSONA_PRUEBA_GONZALO" />
+          </AssociationSet>
+          <FunctionImport Name="PA_Borrado_Logico_Emoticono_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Empleado_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Empresa_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Experiencia_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_logico_MeGusta_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Opinion_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Perfil_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Persona_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_seguidor_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_Sexo_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Registro_De_Error">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Empresa_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Persona_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Usuarios_Por_ID_Con_Fotos_Pruebas">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Usuarios_Por_ID_Pruebas">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SIDA_PA_CHUNGO_GONZALO_EJEMPLO_ALBERTO">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SIDA_PA_OBTENER_TODAS_LAS_EMPRESAS">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MeetFeverModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MeetFeverModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MeetFeverModelStoreContainer" CdmEntityContainer="MeetFeverDatos">
+          <EntitySetMapping Name="Emoticonoes">
+            <EntityTypeMapping TypeName="MeetFeverModel.Emoticono">
+              <MappingFragment StoreEntitySet="Emoticono">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Emoji" ColumnName="Emoji" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadoes">
+            <EntityTypeMapping TypeName="MeetFeverModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="Constrasena" ColumnName="Constrasena" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="MeetFeverModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre_Empresa" ColumnName="Nombre_Empresa" />
+                <ScalarProperty Name="Cif" ColumnName="Cif" />
+                <ScalarProperty Name="Direccion_Facturacion" ColumnName="Direccion_Facturacion" />
+                <ScalarProperty Name="Direccion_Fiscal" ColumnName="Direccion_Fiscal" />
+                <ScalarProperty Name="Nombre_Persona" ColumnName="Nombre_Persona" />
+                <ScalarProperty Name="Apellido1_Persona" ColumnName="Apellido1_Persona" />
+                <ScalarProperty Name="Apellido2_Persona" ColumnName="Apellido2_Persona" />
+                <ScalarProperty Name="Dni_Persona" ColumnName="Dni_Persona" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrada_Persona">
+            <EntityTypeMapping TypeName="MeetFeverModel.Entrada_Persona">
+              <MappingFragment StoreEntitySet="Entrada_Persona">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+                <ScalarProperty Name="Id_Experiencia" ColumnName="Id_Experiencia" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experiencias">
+            <EntityTypeMapping TypeName="MeetFeverModel.Experiencia">
+              <MappingFragment StoreEntitySet="Experiencia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha_Celebracion" ColumnName="Fecha_Celebracion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Aforo" ColumnName="Aforo" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeGustas">
+            <EntityTypeMapping TypeName="MeetFeverModel.MeGusta">
+              <MappingFragment StoreEntitySet="MeGusta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_Opinion" ColumnName="Id_Opinion" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opinions">
+            <EntityTypeMapping TypeName="MeetFeverModel.Opinion">
+              <MappingFragment StoreEntitySet="Opinion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Emoticono" ColumnName="Emoticono" />
+                <ScalarProperty Name="Id_Autor" ColumnName="Id_Autor" />
+                <ScalarProperty Name="Id_Empresa" ColumnName="Id_Empresa" />
+                <ScalarProperty Name="Id_Experiencia" ColumnName="Id_Experiencia" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfils">
+            <EntityTypeMapping TypeName="MeetFeverModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="MeetFeverModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido1" ColumnName="Apellido1" />
+                <ScalarProperty Name="Apellido2" ColumnName="Apellido2" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Fecha_Nacimiento" ColumnName="Fecha_Nacimiento" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seguidor_Seguido">
+            <EntityTypeMapping TypeName="MeetFeverModel.Seguidor_Seguido">
+              <MappingFragment StoreEntitySet="Seguidor_Seguido">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Seguidor" ColumnName="Seguidor" />
+                <ScalarProperty Name="Seguido" ColumnName="Seguido" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexoes">
+            <EntityTypeMapping TypeName="MeetFeverModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sexo1" ColumnName="Sexo" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIDA_EMPRESA_PRUEBA_GONZALO">
+            <EntityTypeMapping TypeName="MeetFeverModel.SIDA_EMPRESA_PRUEBA_GONZALO">
+              <MappingFragment StoreEntitySet="SIDA_EMPRESA_PRUEBA_GONZALO">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre_empresa" ColumnName="nombre_empresa" />
+                <ScalarProperty Name="cif" ColumnName="cif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIDA_PERSONA_PRUEBA_GONZALO">
+            <EntityTypeMapping TypeName="MeetFeverModel.SIDA_PERSONA_PRUEBA_GONZALO">
+              <MappingFragment StoreEntitySet="SIDA_PERSONA_PRUEBA_GONZALO">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIDA_USUARIO_PRUEBA_GONZALO">
+            <EntityTypeMapping TypeName="MeetFeverModel.SIDA_USUARIO_PRUEBA_GONZALO">
+              <MappingFragment StoreEntitySet="SIDA_USUARIO_PRUEBA_GONZALO">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MeetFeverModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="MeetFeverModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="Foto_Perfil" ColumnName="Foto_Perfil" />
+                <ScalarProperty Name="Foto_Fondo" ColumnName="Foto_Fondo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Frase" ColumnName="Frase" />
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registroes">
+            <EntityTypeMapping TypeName="MeetFeverModel.Registro">
+              <MappingFragment StoreEntitySet="Registro">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Excepcion" ColumnName="Excepcion" />
+                <ScalarProperty Name="Aplicacion_Fuente" ColumnName="Aplicacion_Fuente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Emoticono_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Emoticono_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empleado_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empresa_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Experiencia_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_logico_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_logico_MeGusta_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Opinion_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Perfil_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Persona_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_seguidor_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_seguidor_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Sexo_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Sexo_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Registro_De_Error" FunctionName="MeetFeverModel.Store.PA_Insertar_Registro_De_Error" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Usuarios_Por_ID_Con_Fotos_Pruebas" FunctionName="MeetFeverModel.Store.PA_Obtener_Usuarios_Por_ID_Con_Fotos_Pruebas" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Usuarios_Por_ID_Pruebas" FunctionName="MeetFeverModel.Store.PA_Obtener_Usuarios_Por_ID_Pruebas" />
+          <FunctionImportMapping FunctionImportName="SIDA_PA_CHUNGO_GONZALO_EJEMPLO_ALBERTO" FunctionName="MeetFeverModel.Store.SIDA_PA_CHUNGO_GONZALO_EJEMPLO_ALBERTO" />
+          <FunctionImportMapping FunctionImportName="SIDA_PA_OBTENER_TODAS_LAS_EMPRESAS" FunctionName="MeetFeverModel.Store.SIDA_PA_OBTENER_TODAS_LAS_EMPRESAS" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MeetFeverModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MeetFeverModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MeetFeverModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MeetFeverModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MeetFeverModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MeetFeverModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MeetFeverModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MeetFeverModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MeetFeverModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
