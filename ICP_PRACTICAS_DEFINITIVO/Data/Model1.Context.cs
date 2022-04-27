@@ -360,5 +360,353 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual int PAG_Iniciar_Sesion(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAG_Iniciar_Sesion", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Logico_MeGusta_Por_ID1(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Logico_MeGusta_Por_ID1", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Emoticono_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Emoticono_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Empleado_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Empleado_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Empresa_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Empresa_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Experiencia_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Experiencia_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_MeGusta_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_MeGusta_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Opinion_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Opinion_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Perfil_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Perfil_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Persona_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Persona_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_seguidor_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_seguidor_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Borrado_Real_Sexo_Por_ID(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Real_Sexo_Por_ID", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Empresa_Por_Cif(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Empresa_Por_Cif", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Empresa_Por_Nick(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Empresa_Por_Nick", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Experiencias_Por_Empresa(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Experiencias_Por_Empresa", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Experiencias_Por_ID(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Experiencias_Por_ID", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_MeGustas_Por_ID_Opinion(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_MeGustas_Por_ID_Opinion", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Opinion_Por_Autor(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Opinion_Por_Autor", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Opinion_Por_ID(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Opinion_Por_ID", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Persona_Por_Correo(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Persona_Por_Correo", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Persona_Por_Nick(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Persona_Por_Nick", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Persona_Por_Nombre(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Persona_Por_Nombre", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Seguidores_Usuario_ID(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Seguidores_Usuario_ID", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Seguidos_Usuario_ID(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Seguidos_Usuario_ID", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Todas_Empresas(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Todas_Empresas", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Todas_Opiniones(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Todas_Opiniones", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Todas_Personas(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Todas_Personas", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PAG_Top_10_Empresas(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAG_Top_10_Empresas", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
     }
 }

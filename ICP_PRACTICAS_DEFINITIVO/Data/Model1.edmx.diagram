@@ -6,12 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="78b5d45082db476a8c3d86eeef64502b" Name="Diagram1">
         <EntityTypeShape EntityType="MeetFeverModel.Emoticono" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeetFeverModel.Empleado" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeetFeverModel.Empleado" Width="1.5" PointX="4.625" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Empresa" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Entrada_Persona" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Experiencia" Width="1.5" PointX="6" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.MeGusta" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeetFeverModel.Opinion" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeetFeverModel.Opinion" Width="1.5" PointX="6.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Perfil" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Persona" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Seguidor_Seguido" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_PERSONA_PRUEBA_GONZALO" Width="1.5" PointX="13" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_USUARIO_PRUEBA_GONZALO" Width="1.5" PointX="10.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.sysdiagram" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeetFeverModel.Usuario" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeetFeverModel.Usuario" Width="1.5" PointX="1.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Registro" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="MeetFeverModel.FK__Opinion__Emotico__45BE5BA9" ManuallyRouted="false" />
         <AssociationConnector Association="MeetFeverModel.FK__Empleado__Id_Car__3A4CA8FD" ManuallyRouted="false" />

@@ -12,6 +12,60 @@ namespace MeetFeverWebService.Negocio
     public class PR_Negocio
     {
 		// Metodos relacionados con empresa
+		public DefaultResult ObtenerTopEmpresasConMasSeguidores()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAG_Top_10_Empresas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult IniciarSesion(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAG_Iniciar_Sesion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		public DefaultResult ObtenerEmpresaPorId(object request)
 		{
 			DefaultResult response = new DefaultResult();

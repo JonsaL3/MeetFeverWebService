@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MeetFeverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MeetFeverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Emoticono">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,13 +30,13 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nombre_Empresa" Type="varchar" MaxLength="100" />
-          <Property Name="Cif" Type="varchar" MaxLength="9" />
+          <Property Name="Cif" Type="varchar" MaxLength="10" />
           <Property Name="Direccion_Facturacion" Type="varchar" MaxLength="100" />
           <Property Name="Direccion_Fiscal" Type="varchar" MaxLength="100" />
           <Property Name="Nombre_Persona" Type="varchar" MaxLength="50" />
           <Property Name="Apellido1_Persona" Type="varchar" MaxLength="50" />
           <Property Name="Apellido2_Persona" Type="varchar" MaxLength="50" />
-          <Property Name="Dni_Persona" Type="varchar" MaxLength="9" />
+          <Property Name="Dni_Persona" Type="char" MaxLength="9" />
           <Property Name="Eliminado" Type="bit" />
         </EntityType>
         <EntityType Name="Entrada_Persona">
@@ -103,7 +103,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Dni" Type="varchar" MaxLength="9" />
+          <Property Name="Dni" Type="char" MaxLength="10" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="Apellido1" Type="varchar" MaxLength="50" />
           <Property Name="Apellido2" Type="varchar" MaxLength="50" />
@@ -187,7 +187,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Property Name="Nick" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Foto_Perfil" Type="nvarchar(max)" />
           <Property Name="Foto_Fondo" Type="nvarchar(max)" />
-          <Property Name="Telefono" Type="varchar" MaxLength="9" />
+          <Property Name="Telefono" Type="char" MaxLength="9" />
           <Property Name="Frase" Type="varchar" MaxLength="255" />
           <Property Name="Eliminado" Type="bit" Nullable="false" />
         </EntityType>
@@ -420,7 +420,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
-        <Function Name="PA_Borrado_logico_MeGusta_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="PA_Borrado_Logico_MeGusta_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
@@ -456,7 +456,74 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="PA_Borrado_Real_Emoticono_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Empleado_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Empresa_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Experiencia_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_MeGusta_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Opinion_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Perfil_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Persona_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_seguidor_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Borrado_Real_Sexo_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="PA_Insertar_Registro_De_Error" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Empresa_Por_Cif" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
@@ -470,8 +537,103 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="PA_Obtener_Empresa_Por_Nick" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Experiencias_Por_Empresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Experiencias_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_MeGustas_Por_ID_Opinion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Opinion_Por_Autor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Opinion_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Persona_Por_Correo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="PA_Obtener_Persona_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Persona_Por_Nick" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Persona_Por_Nombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Seguidores_Usuario_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Seguidos_Usuario_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Todas_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Todas_Opiniones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Todas_Personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
@@ -486,6 +648,19 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
         </Function>
         <Function Name="PA_Obtener_Usuarios_Por_ID_Pruebas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PAG_Iniciar_Sesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PAG_Top_10_Empresas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
@@ -626,8 +801,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <End Role="SIDA_PERSONA_PRUEBA_GONZALO" EntitySet="SIDA_PERSONA_PRUEBA_GONZALO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MeetFeverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -659,13 +833,13 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Nombre_Empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Cif" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Cif" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Direccion_Facturacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Direccion_Fiscal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Nombre_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellido1_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellido2_Persona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Dni_Persona" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Dni_Persona" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
           <Property Name="Eliminado" Type="Boolean" />
           <NavigationProperty Name="Empleadoes" Relationship="Self.FK__Empleado__Id_Emp__395884C4" FromRole="Empresa" ToRole="Empleado" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Empresa__Id__31B762FC" FromRole="Empresa" ToRole="Usuario" />
@@ -747,7 +921,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Dni" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Dni" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -829,7 +1003,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Property Name="Nick" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Foto_Perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Foto_Fondo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
           <Property Name="Frase" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Eliminado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Empresa" Relationship="Self.FK__Empresa__Id__31B762FC" FromRole="Usuario" ToRole="Empresa" />
@@ -1276,6 +1450,187 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="PAG_Iniciar_Sesion">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Logico_MeGusta_Por_ID1">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Emoticono_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Empleado_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Empresa_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Experiencia_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_MeGusta_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Opinion_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Perfil_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Persona_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_seguidor_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Borrado_Real_Sexo_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Empresa_Por_Cif">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Empresa_Por_Nick">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Experiencias_Por_Empresa">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Experiencias_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_MeGustas_Por_ID_Opinion">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Opinion_Por_Autor">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Opinion_Por_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Persona_Por_Correo">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Persona_Por_Nick">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Persona_Por_Nombre">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Seguidores_Usuario_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Seguidos_Usuario_ID">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Todas_Empresas">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Todas_Opiniones">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Todas_Personas">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PAG_Top_10_Empresas">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1497,7 +1852,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empleado_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empresa_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Experiencia_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_logico_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_logico_MeGusta_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Opinion_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Perfil_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Persona_Por_ID" />
@@ -1534,6 +1888,34 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MeetFeverModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MeetFeverModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="PAG_Iniciar_Sesion" FunctionName="MeetFeverModel.Store.PAG_Iniciar_Sesion" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_MeGusta_Por_ID1" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_MeGusta_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Emoticono_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Emoticono_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empleado_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empresa_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Experiencia_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_MeGusta_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Opinion_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Perfil_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Persona_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_seguidor_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_seguidor_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Sexo_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Sexo_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Cif" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Cif" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Nick" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Nick" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencias_Por_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencias_Por_Empresa" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencias_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencias_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_MeGustas_Por_ID_Opinion" FunctionName="MeetFeverModel.Store.PA_Obtener_MeGustas_Por_ID_Opinion" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Autor" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Autor" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Correo" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Correo" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Nick" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Nick" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Nombre" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Nombre" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Seguidores_Usuario_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Seguidores_Usuario_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Seguidos_Usuario_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Seguidos_Usuario_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Empresas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Empresas" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Opiniones" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Opiniones" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Personas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Personas" />
+          <FunctionImportMapping FunctionImportName="PAG_Top_10_Empresas" FunctionName="MeetFeverModel.Store.PAG_Top_10_Empresas" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
