@@ -12,6 +12,22 @@ namespace MeetFeverWebService.Controllers
 	public class EmpresaController : ApiController
 	{
 		[HttpGet]
+		[Route("ObtenerTop4ExperienciasMasOpinadas")]
+		public HttpResponseMessage ObtenerTop4ExperienciasMasOpinadas()
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTop4ExperienciasMasOpinadas();
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
 		[Route("ObtenerTopEmpresasConMasSeguidores")]
 		public HttpResponseMessage ObtenerTopEmpresasConMasSeguidores()
 		{

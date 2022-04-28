@@ -12,6 +12,33 @@ namespace MeetFeverWebService.Negocio
     public class PR_Negocio
     {
 		// Metodos relacionados con empresa
+		public DefaultResult ObtenerTop4ExperienciasMasOpinadas()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		public DefaultResult ObtenerTopEmpresasConMasSeguidores()
 		{
 			DefaultResult response = new DefaultResult();

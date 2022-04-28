@@ -58,7 +58,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Titulo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Titulo" Type="varchar" MaxLength="50" />
           <Property Name="Descripcion" Type="varchar" MaxLength="255" />
           <Property Name="Fecha_Celebracion" Type="datetime" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="6" Scale="2" Nullable="false" />
@@ -666,6 +666,12 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="SIDA_PA_CHUNGO_GONZALO_EJEMPLO_ALBERTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
@@ -866,7 +872,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Titulo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Fecha_Celebracion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Precio" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
@@ -1631,6 +1637,12 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1916,6 +1928,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Opiniones" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Opiniones" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Personas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Personas" />
           <FunctionImportMapping FunctionImportName="PAG_Top_10_Empresas" FunctionName="MeetFeverModel.Store.PAG_Top_10_Empresas" />
+          <FunctionImportMapping FunctionImportName="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" FunctionName="MeetFeverModel.Store.PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
