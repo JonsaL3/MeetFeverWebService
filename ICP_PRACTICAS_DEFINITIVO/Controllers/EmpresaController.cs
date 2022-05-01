@@ -42,7 +42,7 @@ namespace MeetFeverWebService.Controllers
 				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
 			}
 		}
-
+		//Lechuga que luego debo comer
 		[HttpPost]
 		[Route("ObtenerEmpresaPorId")]
 		public HttpResponseMessage ObtenerEmpresaPorId([FromBody] object request)
