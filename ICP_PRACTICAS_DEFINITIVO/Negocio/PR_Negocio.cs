@@ -11,6 +11,61 @@ namespace MeetFeverWebService.Negocio
 {
     public class PR_Negocio
     {
+		// Metodos relacionados con las personas
+		public DefaultResult ObtenerPersonasQueQuizasConozca(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAGA_Personas_Que_Quizas_Conozca(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTopPersonasConMasSeguidores()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAG_Top_10_Personas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		// Metodos relacionados con empresa
 		public DefaultResult ObtenerTop4ExperienciasMasOpinadas()
 		{
@@ -66,6 +121,7 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		// Métodos relacionados con usuarios genéricos
 		public DefaultResult IniciarSesion(object request)
 		{
 			DefaultResult response = new DefaultResult();
