@@ -35,5 +35,6 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public virtual ICollection<Entrada_Persona> Entrada_Persona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Opinion> Opinions { get; set; }
+        public virtual Empresa Empresa { get; set; }
     }
 }

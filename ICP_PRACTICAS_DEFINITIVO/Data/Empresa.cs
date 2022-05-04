@@ -19,6 +19,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         {
             this.Empleadoes = new HashSet<Empleado>();
             this.Opinions = new HashSet<Opinion>();
+            this.Experiencias = new HashSet<Experiencia>();
         }
     
         public int Id { get; set; }
@@ -37,5 +38,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Opinion> Opinions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Experiencia> Experiencias { get; set; }
     }
 }
