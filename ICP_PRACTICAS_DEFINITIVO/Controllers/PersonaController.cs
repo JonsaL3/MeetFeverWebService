@@ -12,6 +12,38 @@ namespace MeetFeverWebService.Controllers
 	public class PersonaController : ApiController
 	{
 		[HttpPost] // ESTO DEBERÍA DE SER UN GET, INVESTIGAR COMO MANDAR UNA ID EN LA URL
+		[Route("ObtenerTodasLasPersonasQueQuizasConozca")]
+		public HttpResponseMessage ObtenerTodasLasPersonasQueQuizasConozca([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTodasLasPersonasQueQuizasConozca(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerTodasLasPersonas")]
+		public HttpResponseMessage ObtenerTodasLasPersonas()
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTodasLasPersonas();
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost] // ESTO DEBERÍA DE SER UN GET, INVESTIGAR COMO MANDAR UNA ID EN LA URL
 		[Route("ObtenerPersonasQueQuizasConozca")]
 		public HttpResponseMessage ObtenerPersonasQueQuizasConozca([FromBody] object request)
 		{

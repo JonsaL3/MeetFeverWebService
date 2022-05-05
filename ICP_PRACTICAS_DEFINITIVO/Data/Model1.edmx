@@ -1012,8 +1012,8 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Property Name="Eliminado" Type="Boolean" />
           <NavigationProperty Name="Empleadoes" Relationship="Self.FK__Empleado__Id_Emp__395884C4" FromRole="Empresa" ToRole="Empleado" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK__Empresa__Id__31B762FC" FromRole="Empresa" ToRole="Usuario" />
+          <NavigationProperty Name="Experiencias" Relationship="Self.FK__Experienc__Id_Em__5E54FF49" FromRole="Empresa" ToRole="Experiencia" />
           <NavigationProperty Name="Opinions" Relationship="Self.FK__Opinion__Id_Empr__42E1EEFE" FromRole="Empresa" ToRole="Opinion" />
-          <NavigationProperty Name="Experiencias" Relationship="MeetFeverModel.FK__Experienc__Id_Em__5E54FF49" FromRole="Empresa" ToRole="Experiencia" />
         </EntityType>
         <EntityType Name="Entrada_Persona">
           <Key>
@@ -1044,9 +1044,9 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Id_Empresa" Type="Int32" Nullable="false" />
           <Property Name="Eliminado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK__Experienc__Id_Em__5E54FF49" FromRole="Experiencia" ToRole="Empresa" />
           <NavigationProperty Name="Entrada_Persona" Relationship="Self.FK__Entrada_P__Id_Ex__540C7B00" FromRole="Experiencia" ToRole="Entrada_Persona" />
           <NavigationProperty Name="Opinions" Relationship="Self.FK__Opinion__Id_Expe__44CA3770" FromRole="Experiencia" ToRole="Opinion" />
-          <NavigationProperty Name="Empresa" Relationship="MeetFeverModel.FK__Experienc__Id_Em__5E54FF49" FromRole="Experiencia" ToRole="Empresa" />
         </EntityType>
         <EntityType Name="MeGusta">
           <Key>
@@ -1242,6 +1242,18 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Experienc__Id_Em__5E54FF49">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Experiencia" Type="Self.Experiencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Experiencia">
+              <PropertyRef Name="Id_Empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Opinion__Id_Empr__42E1EEFE">
           <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
           <End Role="Opinion" Type="Self.Opinion" Multiplicity="*" />
@@ -1432,6 +1444,10 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Empresa" EntitySet="Empresas" />
           </AssociationSet>
+          <AssociationSet Name="FK__Experienc__Id_Em__5E54FF49" Association="Self.FK__Experienc__Id_Em__5E54FF49">
+            <End Role="Empresa" EntitySet="Empresas" />
+            <End Role="Experiencia" EntitySet="Experiencias" />
+          </AssociationSet>
           <AssociationSet Name="FK__Opinion__Id_Empr__42E1EEFE" Association="Self.FK__Opinion__Id_Empr__42E1EEFE">
             <End Role="Empresa" EntitySet="Empresas" />
             <End Role="Opinion" EntitySet="Opinions" />
@@ -1484,6 +1500,54 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
             <End Role="SIDA_PERSONA_PRUEBA_GONZALO" EntitySet="SIDA_PERSONA_PRUEBA_GONZALO" />
           </AssociationSet>
+          <FunctionImport Name="PA_Actualizar_Emoticono">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Empleado">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Empresa">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Experiencia">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Opinion">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Perfil">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Persona">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Actualizar_Sexo">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PA_Borrado_Logico_Emoticono_Por_ID">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
@@ -1508,7 +1572,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PA_Borrado_logico_MeGusta_Por_ID">
+          <FunctionImport Name="PA_Borrado_Logico_MeGusta_Por_ID">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
@@ -1539,95 +1603,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PA_Borrado_Logico_Sexo_Por_ID">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Registro_De_Error">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Empresa_Por_ID">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Persona_Por_ID">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Usuarios_Por_ID_Con_Fotos_Pruebas">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Usuarios_Por_ID_Pruebas">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SIDA_PA_CHUNGO_GONZALO_EJEMPLO_ALBERTO">
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="SIDA_PA_OBTENER_TODAS_LAS_EMPRESAS">
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MeetFeverModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MeetFeverModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="PAG_Iniciar_Sesion">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Borrado_Logico_MeGusta_Por_ID1">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
@@ -1693,7 +1668,94 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Emoticono">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Empleado">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Empresa">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Entrada_Persona">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Experiencia">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Opinion">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Perfil">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Persona">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Registro_De_Error">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Insertar_Sexo">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_MeGusta">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Empelados_Por_Empresa">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PA_Obtener_Empresa_Por_Cif">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Empresa_Por_Correo">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Empresa_Por_ID">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
@@ -1742,7 +1804,28 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Opinion_Por_Id_Empresa">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Opinion_Por_Id_Experiencia">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PA_Obtener_Persona_Por_Correo">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Persona_Por_ID">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
@@ -1783,6 +1866,12 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Todas_Experiencias">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PA_Obtener_Todas_Opiniones">
             <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
@@ -1795,32 +1884,20 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Seguir">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PAG_Iniciar_Sesion">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PAG_Top_10_Empresas">
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones">
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Empresa">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Persona">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Empresa_Por_Correo">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
@@ -1832,140 +1909,20 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Emoticono">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+          <FunctionImport Name="PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Empleado">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Opinion">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Perfil">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Sexo">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+          <FunctionImport Name="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PAGA_Personas_Que_Quizas_Conozca">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <AssociationSet Name="FK__Experienc__Id_Em__5E54FF49" Association="MeetFeverModel.FK__Experienc__Id_Em__5E54FF49">
-            <End Role="Empresa" EntitySet="Empresas" />
-            <End Role="Experiencia" EntitySet="Experiencias" />
-          </AssociationSet>
-          <FunctionImport Name="PA_Actualizar_Emoticono">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Empleado">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Empresa">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Experiencia">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Opinion">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Perfil">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Persona">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Actualizar_Sexo">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Entrada_Persona">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Insertar_Experiencia">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_MeGusta">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Opinion_Por_Id_Empresa">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Opinion_Por_Id_Experiencia">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Todas_Experiencias">
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_Seguir">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h">
             <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
@@ -1978,13 +1935,36 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PA_Obtener_Empelados_Por_Empresa">
-            <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
-            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
-            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
-            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MeetFeverModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MeetFeverModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1997,18 +1977,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="FK__Experienc__Id_Em__5E54FF49">
-          <End Type="MeetFeverModel.Empresa" Role="Empresa" Multiplicity="1" />
-          <End Type="MeetFeverModel.Experiencia" Role="Experiencia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresa">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Experiencia">
-              <PropertyRef Name="Id_Empresa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2214,18 +2182,75 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Emoticono" FunctionName="MeetFeverModel.Store.PA_Actualizar_Emoticono" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Empleado" FunctionName="MeetFeverModel.Store.PA_Actualizar_Empleado" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Empresa" FunctionName="MeetFeverModel.Store.PA_Actualizar_Empresa" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Experiencia" FunctionName="MeetFeverModel.Store.PA_Actualizar_Experiencia" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Opinion" FunctionName="MeetFeverModel.Store.PA_Actualizar_Opinion" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Perfil" FunctionName="MeetFeverModel.Store.PA_Actualizar_Perfil" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Persona" FunctionName="MeetFeverModel.Store.PA_Actualizar_Persona" />
+          <FunctionImportMapping FunctionImportName="PA_Actualizar_Sexo" FunctionName="MeetFeverModel.Store.PA_Actualizar_Sexo" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Emoticono_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Emoticono_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empleado_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empresa_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Experiencia_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_MeGusta_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Opinion_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Perfil_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Persona_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_seguidor_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_seguidor_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Sexo_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Sexo_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Emoticono_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Emoticono_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empleado_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empresa_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Experiencia_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_MeGusta_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Opinion_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Perfil_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Persona_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_seguidor_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_seguidor_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Sexo_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Sexo_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Emoticono" FunctionName="MeetFeverModel.Store.PA_Insertar_Emoticono" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Empleado" FunctionName="MeetFeverModel.Store.PA_Insertar_Empleado" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Empresa" FunctionName="MeetFeverModel.Store.PA_Insertar_Empresa" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Entrada_Persona" FunctionName="MeetFeverModel.Store.PA_Insertar_Entrada_Persona" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Experiencia" FunctionName="MeetFeverModel.Store.PA_Insertar_Experiencia" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Opinion" FunctionName="MeetFeverModel.Store.PA_Insertar_Opinion" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Perfil" FunctionName="MeetFeverModel.Store.PA_Insertar_Perfil" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Persona" FunctionName="MeetFeverModel.Store.PA_Insertar_Persona" />
           <FunctionImportMapping FunctionImportName="PA_Insertar_Registro_De_Error" FunctionName="MeetFeverModel.Store.PA_Insertar_Registro_De_Error" />
+          <FunctionImportMapping FunctionImportName="PA_Insertar_Sexo" FunctionName="MeetFeverModel.Store.PA_Insertar_Sexo" />
+          <FunctionImportMapping FunctionImportName="PA_MeGusta" FunctionName="MeetFeverModel.Store.PA_MeGusta" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empelados_Por_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Empelados_Por_Empresa" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Cif" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Cif" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Correo" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Correo" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Nick" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Nick" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencias_Por_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencias_Por_Empresa" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencias_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencias_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_MeGustas_Por_ID_Opinion" FunctionName="MeetFeverModel.Store.PA_Obtener_MeGustas_Por_ID_Opinion" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Autor" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Autor" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Id_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Id_Empresa" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Id_Experiencia" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Id_Experiencia" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Correo" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Correo" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Nick" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Nick" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Nombre" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Nombre" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Seguidores_Usuario_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Seguidores_Usuario_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Seguidos_Usuario_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Seguidos_Usuario_ID" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Empresas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Empresas" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Experiencias" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Experiencias" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Opiniones" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Opiniones" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Personas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Personas" />
+          <FunctionImportMapping FunctionImportName="PA_Seguir" FunctionName="MeetFeverModel.Store.PA_Seguir" />
+          <FunctionImportMapping FunctionImportName="PAG_Iniciar_Sesion" FunctionName="MeetFeverModel.Store.PAG_Iniciar_Sesion" />
+          <FunctionImportMapping FunctionImportName="PAG_Top_10_Empresas" FunctionName="MeetFeverModel.Store.PAG_Top_10_Empresas" />
+          <FunctionImportMapping FunctionImportName="PAG_Top_10_Personas" FunctionName="MeetFeverModel.Store.PAG_Top_10_Personas" />
+          <FunctionImportMapping FunctionImportName="PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h" FunctionName="MeetFeverModel.Store.PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h" />
+          <FunctionImportMapping FunctionImportName="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" FunctionName="MeetFeverModel.Store.PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" />
+          <FunctionImportMapping FunctionImportName="PAGA_Personas_Que_Quizas_Conozca" FunctionName="MeetFeverModel.Store.PAGA_Personas_Que_Quizas_Conozca" />
+          <FunctionImportMapping FunctionImportName="PAGA_Todas_Personas_Que_Quizas_Conozca" FunctionName="MeetFeverModel.Store.PAGA_Todas_Personas_Que_Quizas_Conozca" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MeetFeverModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MeetFeverModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MeetFeverModel.Store.sp_dropdiagram" />
@@ -2250,63 +2275,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MeetFeverModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MeetFeverModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="PAG_Iniciar_Sesion" FunctionName="MeetFeverModel.Store.PAG_Iniciar_Sesion" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_MeGusta_Por_ID1" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_MeGusta_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Emoticono_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Emoticono_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empleado_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empresa_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Experiencia_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_MeGusta_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Opinion_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Perfil_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Persona_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_seguidor_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_seguidor_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Sexo_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Sexo_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Cif" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Cif" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Nick" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Nick" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencias_Por_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencias_Por_Empresa" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencias_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencias_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_MeGustas_Por_ID_Opinion" FunctionName="MeetFeverModel.Store.PA_Obtener_MeGustas_Por_ID_Opinion" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Autor" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Autor" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Correo" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Correo" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Nick" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Nick" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_Por_Nombre" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_Por_Nombre" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Seguidores_Usuario_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Seguidores_Usuario_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Seguidos_Usuario_ID" FunctionName="MeetFeverModel.Store.PA_Obtener_Seguidos_Usuario_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Empresas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Empresas" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Opiniones" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Opiniones" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Personas" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Personas" />
-          <FunctionImportMapping FunctionImportName="PAG_Top_10_Empresas" FunctionName="MeetFeverModel.Store.PAG_Top_10_Empresas" />
-          <FunctionImportMapping FunctionImportName="PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" FunctionName="MeetFeverModel.Store.PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Empresa" FunctionName="MeetFeverModel.Store.PA_Insertar_Empresa" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Persona" FunctionName="MeetFeverModel.Store.PA_Insertar_Persona" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_Por_Correo" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_Por_Correo" />
-          <FunctionImportMapping FunctionImportName="PAG_Top_10_Personas" FunctionName="MeetFeverModel.Store.PAG_Top_10_Personas" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Emoticono" FunctionName="MeetFeverModel.Store.PA_Insertar_Emoticono" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Empleado" FunctionName="MeetFeverModel.Store.PA_Insertar_Empleado" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Opinion" FunctionName="MeetFeverModel.Store.PA_Insertar_Opinion" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Perfil" FunctionName="MeetFeverModel.Store.PA_Insertar_Perfil" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Sexo" FunctionName="MeetFeverModel.Store.PA_Insertar_Sexo" />
-          <FunctionImportMapping FunctionImportName="PAGA_Personas_Que_Quizas_Conozca" FunctionName="MeetFeverModel.Store.PAGA_Personas_Que_Quizas_Conozca" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Emoticono" FunctionName="MeetFeverModel.Store.PA_Actualizar_Emoticono" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Empleado" FunctionName="MeetFeverModel.Store.PA_Actualizar_Empleado" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Empresa" FunctionName="MeetFeverModel.Store.PA_Actualizar_Empresa" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Experiencia" FunctionName="MeetFeverModel.Store.PA_Actualizar_Experiencia" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Opinion" FunctionName="MeetFeverModel.Store.PA_Actualizar_Opinion" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Perfil" FunctionName="MeetFeverModel.Store.PA_Actualizar_Perfil" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Persona" FunctionName="MeetFeverModel.Store.PA_Actualizar_Persona" />
-          <FunctionImportMapping FunctionImportName="PA_Actualizar_Sexo" FunctionName="MeetFeverModel.Store.PA_Actualizar_Sexo" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Entrada_Persona" FunctionName="MeetFeverModel.Store.PA_Insertar_Entrada_Persona" />
-          <FunctionImportMapping FunctionImportName="PA_Insertar_Experiencia" FunctionName="MeetFeverModel.Store.PA_Insertar_Experiencia" />
-          <FunctionImportMapping FunctionImportName="PA_MeGusta" FunctionName="MeetFeverModel.Store.PA_MeGusta" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Id_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Id_Empresa" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_Por_Id_Experiencia" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_Por_Id_Experiencia" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Experiencias" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Experiencias" />
-          <FunctionImportMapping FunctionImportName="PA_Seguir" FunctionName="MeetFeverModel.Store.PA_Seguir" />
-          <FunctionImportMapping FunctionImportName="PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h" FunctionName="MeetFeverModel.Store.PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h" />
-          <FunctionImportMapping FunctionImportName="PAGA_Todas_Personas_Que_Quizas_Conozca" FunctionName="MeetFeverModel.Store.PAGA_Todas_Personas_Que_Quizas_Conozca" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Empelados_Por_Empresa" FunctionName="MeetFeverModel.Store.PA_Obtener_Empelados_Por_Empresa" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
