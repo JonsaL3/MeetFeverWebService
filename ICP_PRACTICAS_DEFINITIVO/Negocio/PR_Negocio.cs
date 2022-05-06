@@ -20,335 +20,6 @@ namespace MeetFeverWebService.Negocio
 
 		// Métodos realcionados con los emoticonos
 
-		// Metodos relacionados con las opiniones
-		public DefaultResult ObtenerOpinionPorIdAutor(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_Opinion_Por_Autor(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerOpinionesMasGustadas24Horas()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		// metodos relacionados con las experiencias
-		public DefaultResult ObtenerTop4ExperienciasMasOpinadas()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerTodasLasExperiencias()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_Todas_Experiencias(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		// Metodos relacionados con las personas
-		public DefaultResult ObtenerTodasLasPersonasQueQuizasConozca(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAGA_Personas_Que_Quizas_Conozca(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerTodasLasPersonas()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_Todas_Personas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerPersonasQueQuizasConozca(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAGA_Personas_Que_Quizas_Conozca(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerTopPersonasConMasSeguidores()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAG_Top_10_Personas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		// Metodos relacionados con empresa
-		public DefaultResult ObtenerTodasLasEmpresas()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_Todas_Empresas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerTopEmpresasConMasSeguidores()
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAG_Top_10_Empresas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		// Métodos relacionados con usuarios genéricos
-		public DefaultResult IniciarSesion(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PAG_Iniciar_Sesion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerEmpresaPorId(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_Empresa_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
 		public DefaultResult ActualizarEmoticono(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -813,6 +484,114 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerPersonasQueQuizasConozca(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAGA_Personas_Que_Quizas_Conozca(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTodasLasPersonasQueQuizasConozca(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAGA_Personas_Que_Quizas_Conozca(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTopPersonasConMasSeguidores()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAG_Top_10_Personas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTodasLasPersonas()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Personas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		// Métodos relacionados con empresa
 
 		public DefaultResult ActualizarEmpresa(object request)
@@ -923,6 +702,33 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerEmpresaPorId(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Empresa_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		public DefaultResult ObtenerEmpresaPorCif(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -1004,7 +810,88 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerTopEmpresasConMasSeguidores()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAG_Top_10_Empresas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTodasLasEmpresas()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Empresas(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		// Métodos relacionados con usuarios genéricos
+
+		public DefaultResult IniciarSesion(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAG_Iniciar_Sesion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
 
 		public DefaultResult ObtenerSeguidores(object request)
 		{
@@ -1386,6 +1273,60 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerTodasLasExperiencias()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Experiencias(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTop4ExperienciasMasOpinadas()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		public DefaultResult ComprarExperiencia(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -1522,6 +1463,33 @@ namespace MeetFeverWebService.Negocio
 
 			return response;
 		}
+		 
+		public DefaultResult ObtenerOpinionPorIdAutor(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Opinion_Por_Autor(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
 
 		public DefaultResult ObtenerMegustasDeUnaOpinion(object request)
 		{
@@ -1539,33 +1507,6 @@ namespace MeetFeverWebService.Negocio
 					int invoker = 1;
 
 					var r = ctx.PA_Obtener_MeGustas_Por_ID_Opinion(JsonConvert.SerializeObject(request), paramJsonOUT,invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult ObtenerOpinionPorAutor(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_Opinion_Por_Autor(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1685,7 +1626,7 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		public DefaultResult Obtener100OpinionesConMasMGEn24H()
+		public DefaultResult ObtenerOpinionesMasGustadas24Horas()
 		{
 			DefaultResult response = new DefaultResult();
 

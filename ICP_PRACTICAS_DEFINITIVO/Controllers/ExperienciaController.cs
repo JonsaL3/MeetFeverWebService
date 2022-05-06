@@ -42,5 +42,118 @@ namespace MeetFeverWebService.Controllers
 				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
 			}
 		}
+
+		[HttpPut]
+		[Route("ActualizarExperiencia")]
+		public HttpResponseMessage ActualizarExperiencia([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ActualizarExperiencia(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPut]
+		[Route("BorradoLogicoEXperiencia")]
+		public HttpResponseMessage BorradoLogicoEXperiencia([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.BorradoLogicoEXperiencia(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpDelete]
+		[Route("BorradoRealEXperiencia")]
+		public HttpResponseMessage BorradoRealEXperiencia([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.BorradoRealEXperiencia(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost]
+		[Route("InsertarEXperiencia")]
+		public HttpResponseMessage InsertarEXperiencia([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.InsertarEXperiencia(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerExperienciaPorId")]
+		public HttpResponseMessage ObtenerExperienciaPorId([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerExperienciaPorId(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerExperienciasPorEmpresa")]
+		public HttpResponseMessage ObtenerExperienciasPorEmpresa([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerExperienciasPorEmpresa(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost]
+		[Route("ComprarExperiencia")]
+		public HttpResponseMessage ComprarExperiencia([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ComprarExperiencia(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 }

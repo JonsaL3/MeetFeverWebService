@@ -42,7 +42,7 @@ namespace MeetFeverWebService.Controllers
 				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
 			}
 		}
-		//Lechuga que luego debo comer
+		
 		[HttpPost]
 		[Route("ObtenerEmpresaPorId")]
 		public HttpResponseMessage ObtenerEmpresaPorId([FromBody] object request)
@@ -58,5 +58,120 @@ namespace MeetFeverWebService.Controllers
 				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
 			}
 		}
+
+		[HttpPut]
+		[Route("ActualizarEmpresa")]
+		public HttpResponseMessage ActualizarEmpresa([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ActualizarEmpresa(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPut]
+		[Route("BorradoLogicoEmpresa")]
+		public HttpResponseMessage BorradoLogicoEmpresa([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.BorradoLogicoEmpresa(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpDelete]
+		[Route("BorradoRealEmpresa")]
+		public HttpResponseMessage BorradoRealEmpresa([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.BorradoRealEmpresa(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost]
+		[Route("InsertarEmpresa")]
+		public HttpResponseMessage InsertarEmpresa([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.InsertarEmpresa(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerEmpresaPorCif")]
+		public HttpResponseMessage ObtenerEmpresaPorCif([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerEmpresaPorCif(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerEmpresaPorCorreo")]
+		public HttpResponseMessage ObtenerEmpresaPorCorreo([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerEmpresaPorCorreo(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerEmpresaPorNick")]
+		public HttpResponseMessage ObtenerEmpresaPorNick([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerEmpresaPorNick(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+
+
 	}
 }

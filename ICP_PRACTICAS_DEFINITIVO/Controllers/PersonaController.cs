@@ -74,5 +74,134 @@ namespace MeetFeverWebService.Controllers
 				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
 			}
 		}
+
+		[HttpPut]
+		[Route("ActualizarPersona")]
+		public HttpResponseMessage ActualizarPersona([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ActualizarPersona(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPut]
+		[Route("BorradoLogicoPersona")]
+		public HttpResponseMessage BorradoLogicoPersona([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.BorradoLogicoPersona(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpDelete]
+		[Route("BorradoRealPersona")]
+		public HttpResponseMessage BorradoRealPersona([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.BorradoRealPersona(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost]
+		[Route("InsertarPersona")]
+		public HttpResponseMessage InsertarPersona([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.InsertarPersona(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerPersonaPorCorreo")]
+		public HttpResponseMessage ObtenerPersonaPorCorreo([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerPersonaPorCorreo(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerPersonaPorID")]
+		public HttpResponseMessage ObtenerPersonaPorID([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerPersonaPorID(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerPersonaPorNick")]
+		public HttpResponseMessage ObtenerPersonaPorNick([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerPersonaPorNick(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpGet]
+		[Route("ObtenerPersonaPorNombre")]
+		public HttpResponseMessage ObtenerPersonaPorNombre([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerPersonaPorNombre(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 }
