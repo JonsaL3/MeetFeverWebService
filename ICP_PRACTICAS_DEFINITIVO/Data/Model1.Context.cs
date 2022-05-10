@@ -1034,5 +1034,23 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Todos_Emoticonos", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
+    
+        public virtual int PA_Obtener_Todos_Perfiles(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Todos_Perfiles", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Obtener_Todos_Sexos(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Obtener_Todos_Sexos", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
     }
 }

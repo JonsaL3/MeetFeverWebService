@@ -805,6 +805,18 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="PA_Obtener_Todos_Perfiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Todos_Sexos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="PA_Seguir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
@@ -1991,6 +2003,18 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Todos_Perfiles">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Todos_Sexos">
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2303,6 +2327,8 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MeetFeverModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Entradas_Por_Experiencia" FunctionName="MeetFeverModel.Store.PA_Obtener_Entradas_Por_Experiencia" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Todos_Emoticonos" FunctionName="MeetFeverModel.Store.PA_Obtener_Todos_Emoticonos" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todos_Perfiles" FunctionName="MeetFeverModel.Store.PA_Obtener_Todos_Perfiles" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Todos_Sexos" FunctionName="MeetFeverModel.Store.PA_Obtener_Todos_Sexos" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
