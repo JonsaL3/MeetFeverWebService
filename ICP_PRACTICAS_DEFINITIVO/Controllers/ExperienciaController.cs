@@ -107,7 +107,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerExperienciaPorId")]
 		public HttpResponseMessage ObtenerExperienciaPorId([FromBody] object request)
 		{
@@ -123,7 +123,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerExperienciasPorEmpresa")]
 		public HttpResponseMessage ObtenerExperienciasPorEmpresa([FromBody] object request)
 		{
@@ -155,7 +155,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerEntradasPorExperiencia")]
 		public HttpResponseMessage ObtenerEntradasPorExperiencia([FromBody] object request)
 		{

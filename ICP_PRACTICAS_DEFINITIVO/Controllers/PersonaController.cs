@@ -139,7 +139,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerPersonaPorCorreo")]
 		public HttpResponseMessage ObtenerPersonaPorCorreo([FromBody] object request)
 		{
@@ -155,7 +155,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerPersonaPorID")]
 		public HttpResponseMessage ObtenerPersonaPorID([FromBody] object request)
 		{
@@ -171,7 +171,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerPersonaPorNick")]
 		public HttpResponseMessage ObtenerPersonaPorNick([FromBody] object request)
 		{
@@ -187,7 +187,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerPersonaPorNombre")]
 		public HttpResponseMessage ObtenerPersonaPorNombre([FromBody] object request)
 		{

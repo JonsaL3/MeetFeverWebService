@@ -27,7 +27,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerSeguidores")]
 		public HttpResponseMessage ObtenerSeguidores([FromBody] object request)
 		{
@@ -43,7 +43,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerSeguidos")]
 		public HttpResponseMessage ObtenerSeguidos([FromBody] object request)
 		{

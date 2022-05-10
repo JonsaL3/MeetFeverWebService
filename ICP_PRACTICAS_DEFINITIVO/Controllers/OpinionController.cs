@@ -92,7 +92,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerOpinionPorIdAutor")]
 		public HttpResponseMessage ObtenerOpinionPorIdAutor([FromBody] object request)
 		{
@@ -108,7 +108,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerMegustasDeUnaOpinion")]
 		public HttpResponseMessage ObtenerMegustasDeUnaOpinion([FromBody] object request)
 		{
@@ -124,7 +124,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerOpinionPorId")]
 		public HttpResponseMessage ObtenerOpinionPorId([FromBody] object request)
 		{
@@ -140,7 +140,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerOpinionPorEmpresa")]
 		public HttpResponseMessage ObtenerOpinionPorEmpresa([FromBody] object request)
 		{
@@ -156,7 +156,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerOpinionPorExperiencia")]
 		public HttpResponseMessage ObtenerOpinionPorExperiencia([FromBody] object request)
 		{

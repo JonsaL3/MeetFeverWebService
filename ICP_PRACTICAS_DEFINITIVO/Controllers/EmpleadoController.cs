@@ -76,7 +76,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerEmpleadosPorIdEmpresa")]
 		public HttpResponseMessage ObtenerEmpleadosPorIdEmpresa([FromBody] object request)
 		{

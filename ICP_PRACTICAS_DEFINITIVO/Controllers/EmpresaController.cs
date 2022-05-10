@@ -123,7 +123,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerEmpresaPorCif")]
 		public HttpResponseMessage ObtenerEmpresaPorCif([FromBody] object request)
 		{
@@ -139,7 +139,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerEmpresaPorCorreo")]
 		public HttpResponseMessage ObtenerEmpresaPorCorreo([FromBody] object request)
 		{
@@ -155,7 +155,7 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerEmpresaPorNick")]
 		public HttpResponseMessage ObtenerEmpresaPorNick([FromBody] object request)
 		{
