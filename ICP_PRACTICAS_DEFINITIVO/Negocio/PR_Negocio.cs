@@ -1818,6 +1818,33 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerTodosLosPerfiles()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todos_Perfiles( paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		// Métodos que tratan los Sexos
 
 		public DefaultResult ActualizarSexo(object request)
@@ -1928,8 +1955,35 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerTodosLosSexos()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todos_Sexos(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		// Método que tratael registro de los errores
-		
+
 		public DefaultResult InsertarRegistroDeError(object request)
 		{
 			DefaultResult response = new DefaultResult();
