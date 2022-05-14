@@ -7,18 +7,19 @@ using System.Web.Http;
 
 namespace MeetFeverWebService.Controllers
 {
-	[RoutePrefix("api/meetfever/usuario")]
+	[RoutePrefix("api/meetfever/MeGusta")]
 	//[EnableCors(origins: "*", headers: "*", methods: "*")]
-	public class UsuarioController : ApiController
+	public class MeGustaController : ApiController
 	{
+
 		[HttpPost]
-		[Route("IniciarSesion")]
-		public HttpResponseMessage IniciarSesion([FromBody] object request)
+		[Route("ObtenerMegustasDeUnaOpinion")]
+		public HttpResponseMessage ObtenerMegustasDeUnaOpinion([FromBody] object request)
 		{
 			try
 			{
 				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.IniciarSesion(request);
+				var response = negocio.ObtenerMegustasDeUnaOpinion(request);
 				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
 			}
 			catch (Exception ex)
@@ -28,45 +29,13 @@ namespace MeetFeverWebService.Controllers
 		}
 
 		[HttpPost]
-		[Route("ObtenerSeguidores")]
-		public HttpResponseMessage ObtenerSeguidores([FromBody] object request)
+		[Route("DarMeGusta")]
+		public HttpResponseMessage DarMeGusta([FromBody] object request)
 		{
 			try
 			{
 				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.ObtenerSeguidores(request);
-				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
-			}
-			catch (Exception ex)
-			{
-				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
-			}
-		}
-
-		[HttpPost]
-		[Route("ObtenerSeguidos")]
-		public HttpResponseMessage ObtenerSeguidos([FromBody] object request)
-		{
-			try
-			{
-				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.ObtenerSeguidos(request);
-				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
-			}
-			catch (Exception ex)
-			{
-				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
-			}
-		}
-
-		[HttpPost]
-		[Route("SeguirAUnUsuario")]
-		public HttpResponseMessage SeguirAUnUsuario([FromBody] object request)
-		{
-			try
-			{
-				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.SeguirAUnUsuario(request);
+				var response = negocio.DarMeGusta(request);
 				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
 			}
 			catch (Exception ex)
@@ -76,13 +45,13 @@ namespace MeetFeverWebService.Controllers
 		}
 
 		[HttpPut]
-		[Route("BorradoLogicoSeguidor")]
-		public HttpResponseMessage BorradoLogicoSeguidor([FromBody] object request)
+		[Route("BorradoLogicoMeGusta")]
+		public HttpResponseMessage BorradoLogicoMeGusta([FromBody] object request)
 		{
 			try
 			{
 				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.BorradoLogicoSeguidor(request);
+				var response = negocio.BorradoLogicoMeGusta(request);
 				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
 			}
 			catch (Exception ex)
@@ -92,13 +61,29 @@ namespace MeetFeverWebService.Controllers
 		}
 
 		[HttpDelete]
-		[Route("BorradoRealSeguidor")]
-		public HttpResponseMessage BorradoRealSeguidor([FromBody] object request)
+		[Route("BorradoRealMeGusta")]
+		public HttpResponseMessage BorradoRealMeGusta([FromBody] object request)
 		{
 			try
 			{
 				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.BorradoRealSeguidor(request);
+				var response = negocio.BorradoRealMeGusta(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost]
+		[Route("IsMeGusta")]
+		public HttpResponseMessage IsMeGusta([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.IsMeGusta(request);
 				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
 			}
 			catch (Exception ex)
@@ -108,5 +93,4 @@ namespace MeetFeverWebService.Controllers
 		}
 
 	}
-
 }

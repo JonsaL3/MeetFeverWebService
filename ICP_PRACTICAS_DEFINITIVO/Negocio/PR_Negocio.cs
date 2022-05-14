@@ -1001,33 +1001,6 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		public DefaultResult DarMeGusta(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_MeGusta(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
 		public DefaultResult BorradoLogicoSeguidor(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -1055,33 +1028,6 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		public DefaultResult BorradoLogicoMeGusta(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Borrado_Logico_MeGusta_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
 		public DefaultResult BorradoRealSeguidor(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -1098,33 +1044,6 @@ namespace MeetFeverWebService.Negocio
 					int invoker = 1;
 
 					var r = ctx.PA_Borrado_Real_seguidor_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult BorradoRealMeGusta(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Borrado_Real_MeGusta_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1546,33 +1465,6 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		public DefaultResult ObtenerMegustasDeUnaOpinion(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Obtener_MeGustas_Por_ID_Opinion(JsonConvert.SerializeObject(request), paramJsonOUT,invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
 		public DefaultResult ObtenerOpinionPorId(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -1982,7 +1874,144 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		// Método que tratael registro de los errores
+		// Métodos que tratan los MeGustas
+
+		public DefaultResult ObtenerMegustasDeUnaOpinion(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_MeGustas_Por_ID_Opinion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult DarMeGusta(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_MeGusta(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult BorradoLogicoMeGusta(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Borrado_Logico_MeGusta_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult BorradoRealMeGusta(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Borrado_Real_MeGusta_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult IsMeGusta(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Is_MeGusta(JsonConvert.SerializeObject(request),paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		// Método que trata el registro de los errores
 
 		public DefaultResult InsertarRegistroDeError(object request)
 		{
