@@ -636,6 +636,13 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="PA_Is_Follow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="PA_Is_MeGusta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
@@ -2029,6 +2036,13 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Is_Follow">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="In" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2344,6 +2358,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="PA_Obtener_Todos_Perfiles" FunctionName="MeetFeverModel.Store.PA_Obtener_Todos_Perfiles" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Todos_Sexos" FunctionName="MeetFeverModel.Store.PA_Obtener_Todos_Sexos" />
           <FunctionImportMapping FunctionImportName="PA_Is_MeGusta" FunctionName="MeetFeverModel.Store.PA_Is_MeGusta" />
+          <FunctionImportMapping FunctionImportName="PA_Is_Follow" FunctionName="MeetFeverModel.Store.PA_Is_Follow" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
