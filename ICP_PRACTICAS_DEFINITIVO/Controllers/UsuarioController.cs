@@ -3,12 +3,12 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-//using System.Web.Http.Cors;
+using System.Web.Http.Cors;
 
 namespace MeetFeverWebService.Controllers
 {
 	[RoutePrefix("api/meetfever/usuario")]
-	//[EnableCors(origins: "*", headers: "*", methods: "*")]
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	public class UsuarioController : ApiController
 	{
 		[HttpPost]
