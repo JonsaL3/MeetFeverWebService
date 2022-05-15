@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_EMPRESA_PRUEBA_GONZALO" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_PERSONA_PRUEBA_GONZALO" Width="1.5" PointX="12" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_USUARIO_PRUEBA_GONZALO" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeetFeverModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeetFeverModel.sysdiagram" Width="1.5" PointX="7.875" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Usuario" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Registro" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="MeetFeverModel.FK__Opinion__Emotico__45BE5BA9" ManuallyRouted="false" />
