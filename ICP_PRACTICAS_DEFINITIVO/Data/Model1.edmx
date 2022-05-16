@@ -410,12 +410,14 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="PA_Actualizar_Emoticono" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
         <Function Name="PA_Actualizar_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
@@ -423,12 +425,14 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
         <Function Name="PA_Actualizar_Empresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
         <Function Name="PA_Actualizar_Experiencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
@@ -652,6 +656,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
         </Function>
         <Function Name="PA_MeGusta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
@@ -1550,12 +1555,14 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           </AssociationSet>
           <FunctionImport Name="PA_Actualizar_Emoticono">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PA_Actualizar_Empleado">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
@@ -1563,12 +1570,14 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImport Name="PA_Actualizar_Empresa">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PA_Actualizar_Experiencia">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -1792,6 +1801,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           </FunctionImport>
           <FunctionImport Name="PA_MeGusta">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />

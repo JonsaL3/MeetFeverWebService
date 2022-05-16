@@ -45,7 +45,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Registro> Registroes { get; set; }
     
-        public virtual int PA_Actualizar_Emoticono(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PA_Actualizar_Emoticono(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
             var jSON_INParameter = jSON_IN != null ?
                 new ObjectParameter("JSON_IN", jSON_IN) :
@@ -55,10 +55,10 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Emoticono", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Emoticono", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
-        public virtual int PA_Actualizar_Empleado(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PA_Actualizar_Empleado(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
             var jSON_INParameter = jSON_IN != null ?
                 new ObjectParameter("JSON_IN", jSON_IN) :
@@ -68,10 +68,10 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Empleado", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Empleado", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
-        public virtual int PA_Actualizar_Empresa(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PA_Actualizar_Empresa(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter jSON_OUT, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
             var jSON_INParameter = jSON_IN != null ?
                 new ObjectParameter("JSON_IN", jSON_IN) :
@@ -81,10 +81,10 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Empresa", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Empresa", jSON_INParameter, iNVOKERParameter, jSON_OUT, rETCODE, mENSAJE);
         }
     
-        public virtual int PA_Actualizar_Experiencia(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PA_Actualizar_Experiencia(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter jSON_OUT, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
             var jSON_INParameter = jSON_IN != null ?
                 new ObjectParameter("JSON_IN", jSON_IN) :
@@ -94,7 +94,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Experiencia", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Actualizar_Experiencia", jSON_INParameter, iNVOKERParameter, jSON_OUT, rETCODE, mENSAJE);
         }
     
         public virtual int PA_Actualizar_Opinion(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
@@ -565,7 +565,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Is_MeGusta", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
-        public virtual int PA_MeGusta(string jSON_IN, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PA_MeGusta(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
             var jSON_INParameter = jSON_IN != null ?
                 new ObjectParameter("JSON_IN", jSON_IN) :
@@ -575,7 +575,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_MeGusta", jSON_INParameter, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_MeGusta", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
         public virtual int PA_Obtener_Empelados_Por_Empresa(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
