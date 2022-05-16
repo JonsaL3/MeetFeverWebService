@@ -35,7 +35,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Emoticono(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Emoticono(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -172,7 +172,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Empleado(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Empleado(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -636,7 +636,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Empresa(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Empresa(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje, paramJsonOUT);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1099,7 +1099,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Experiencia(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Experiencia(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje, paramJsonOUT);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1972,7 +1972,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_MeGusta(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_MeGusta(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
