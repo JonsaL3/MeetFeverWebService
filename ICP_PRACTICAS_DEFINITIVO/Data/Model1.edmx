@@ -638,7 +638,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
         </Function>
         <Function Name="PA_Is_Follow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
@@ -814,13 +814,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
-        <Function Name="PA_Obtener_Todas_Opiniones_Referente_A_Usuario_GONZALO_PRUEBA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
-          <Parameter Name="INVOKER" Type="int" Mode="In" />
-          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
-          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
-        </Function>
         <Function Name="PA_Obtener_Todas_Personas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
@@ -871,6 +864,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
         <Function Name="PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
@@ -1963,6 +1957,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
             <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
@@ -2052,7 +2047,7 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           </FunctionImport>
           <FunctionImport Name="PA_Is_Follow">
             <Parameter Name="JSON_IN" Mode="In" Type="String" />
-            <Parameter Name="JSON_OUT" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
             <Parameter Name="INVOKER" Mode="In" Type="Int32" />
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
@@ -2388,7 +2383,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="PA_Is_MeGusta" FunctionName="MeetFeverModel.Store.PA_Is_MeGusta" />
           <FunctionImportMapping FunctionImportName="PA_Is_Follow" FunctionName="MeetFeverModel.Store.PA_Is_Follow" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Opiniones_Referente_A_Usuario" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Opiniones_Referente_A_Usuario" />
-          <FunctionImportMapping FunctionImportName="PA_Obtener_Todas_Opiniones_Referente_A_Usuario_GONZALO_PRUEBA" FunctionName="MeetFeverModel.Store.PA_Obtener_Todas_Opiniones_Referente_A_Usuario_GONZALO_PRUEBA" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

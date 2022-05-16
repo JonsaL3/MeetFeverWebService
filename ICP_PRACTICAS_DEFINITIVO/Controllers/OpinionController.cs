@@ -12,14 +12,14 @@ namespace MeetFeverWebService.Controllers
 	public class OpinionController : ApiController
 	{
 
-		[HttpGet]
+		[HttpPost]
 		[Route("ObtenerOpinionesMasGustadas24Horas")]
-		public HttpResponseMessage ObtenerOpinionesMasGustadas24Horas()
+		public HttpResponseMessage ObtenerOpinionesMasGustadas24Horas([FromBody] object request)
 		{
 			try
 			{
 				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.ObtenerOpinionesMasGustadas24Horas();
+				var response = negocio.ObtenerOpinionesMasGustadas24Horas(request);
 				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
 			}
 			catch (Exception ex)

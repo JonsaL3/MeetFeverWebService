@@ -866,13 +866,17 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAG_Top_10_Personas", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
-        public virtual int PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
             var iNVOKERParameter = iNVOKER.HasValue ?
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
         public virtual int PAGA_Obtener_4_Experiencias_Mas_Mencionadas_En_Opiniones(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
@@ -1066,21 +1070,17 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Is_MeGusta", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
-        public virtual int PA_Is_Follow(string jSON_IN, string jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        public virtual int PA_Is_Follow(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
         {
             var jSON_INParameter = jSON_IN != null ?
                 new ObjectParameter("JSON_IN", jSON_IN) :
                 new ObjectParameter("JSON_IN", typeof(string));
     
-            var jSON_OUTParameter = jSON_OUT != null ?
-                new ObjectParameter("JSON_OUT", jSON_OUT) :
-                new ObjectParameter("JSON_OUT", typeof(string));
-    
             var iNVOKERParameter = iNVOKER.HasValue ?
                 new ObjectParameter("INVOKER", iNVOKER) :
                 new ObjectParameter("INVOKER", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Is_Follow", jSON_INParameter, jSON_OUTParameter, iNVOKERParameter, rETCODE, mENSAJE);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Is_Follow", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
         public virtual int PA_Obtener_Todas_Opiniones_Referente_A_Usuario(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)

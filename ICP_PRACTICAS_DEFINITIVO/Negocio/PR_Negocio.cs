@@ -1575,7 +1575,7 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		public DefaultResult ObtenerOpinionesMasGustadas24Horas()
+		public DefaultResult ObtenerOpinionesMasGustadas24Horas(object request)
 		{
 			DefaultResult response = new DefaultResult();
 
@@ -1590,7 +1590,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					var r = ctx.PAGA_Obtener_100_Opiniones_Mas_MG_Ultimas_24h(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
