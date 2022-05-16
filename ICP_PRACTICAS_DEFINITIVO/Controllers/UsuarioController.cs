@@ -107,6 +107,23 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
+
+		[HttpPost]
+		[Route("IsFollow")]
+		public HttpResponseMessage IsFollow([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.IsFollow(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 
 }
