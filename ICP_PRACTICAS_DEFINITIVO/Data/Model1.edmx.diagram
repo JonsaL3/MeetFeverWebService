@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="58be23065d3a4e35972896df8a112c5c" Name="Diagram1">
+      <Diagram DiagramId="448bf83e24214a99b54ab1f68797f0dd" Name="Diagram1">
         <EntityTypeShape EntityType="MeetFeverModel.Emoticono" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Empleado" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Empresa" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_EMPRESA_PRUEBA_GONZALO" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_PERSONA_PRUEBA_GONZALO" Width="1.5" PointX="12" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.SIDA_USUARIO_PRUEBA_GONZALO" Width="1.5" PointX="9.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeetFeverModel.sysdiagram" Width="1.5" PointX="7.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeetFeverModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Usuario" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeetFeverModel.Registro" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="MeetFeverModel.FK__Opinion__Emotico__45BE5BA9" ManuallyRouted="false" />

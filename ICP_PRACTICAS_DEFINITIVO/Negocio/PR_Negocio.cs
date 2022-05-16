@@ -989,7 +989,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Seguir(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Seguir(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje, paramJsonOUT);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -2089,7 +2089,7 @@ namespace MeetFeverWebService.Negocio
 			DefaultResult response = new DefaultResult();
 
 			response.RETCODE = -1;
-			response.MENSAJE = ex.Message;
+			response.MENSAJE = ex.StackTrace;
 
 			return response;
 		}
