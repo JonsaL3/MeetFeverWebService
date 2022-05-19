@@ -24,7 +24,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public System.DateTime Fecha { get; set; }
-        public int Emoticono { get; set; }
+        public Nullable<int> Emoticono { get; set; }
         public int Id_Autor { get; set; }
         public Nullable<int> Id_Empresa { get; set; }
         public Nullable<int> Id_Experiencia { get; set; }
