@@ -62,7 +62,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Emoticono_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Emoticono_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -89,7 +89,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Emoticono_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Emoticono_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -116,7 +116,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Emoticono(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Emoticono(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -199,7 +199,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Empleado_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Empleado_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -226,7 +226,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Empleado_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Empleado_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -253,7 +253,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Empleado(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Empleado(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -310,7 +310,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Persona(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Persona(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -337,7 +337,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Persona_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Persona_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -364,7 +364,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Persona_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Persona_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -391,7 +391,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Persona(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Persona(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -663,7 +663,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Empresa_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Empresa_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -690,7 +690,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Empresa_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Empresa_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -717,7 +717,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Empresa(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Empresa(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1016,7 +1016,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_seguidor_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_seguidor_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1043,7 +1043,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_seguidor_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_seguidor_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1126,7 +1126,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Experiencia_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Experiencia_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1153,7 +1153,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Experiencia_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Experiencia_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1180,7 +1180,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Experiencia(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Experiencia(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1315,7 +1315,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Entrada_Persona(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Entrada_Persona(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1372,7 +1372,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Opinion(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Opinion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1399,7 +1399,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Opinion_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Opinion_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1426,7 +1426,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Opinion_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Opinion_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1453,7 +1453,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Opinion(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Opinion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1671,7 +1671,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Perfil(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Perfil(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1698,7 +1698,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Perfil_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Perfil_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1725,7 +1725,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Perfil_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Perfil_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1752,7 +1752,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Perfil(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Perfil(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1808,7 +1808,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Actualizar_Sexo(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Actualizar_Sexo(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1835,7 +1835,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_Sexo_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_Sexo_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1862,7 +1862,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_Sexo_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_Sexo_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1889,7 +1889,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Sexo(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Sexo(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1999,7 +1999,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Logico_MeGusta_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Logico_MeGusta_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -2026,7 +2026,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Borrado_Real_MeGusta_Por_ID(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Borrado_Real_MeGusta_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -2082,7 +2082,7 @@ namespace MeetFeverWebService.Negocio
 
 					int invoker = 1;
 
-					var r = ctx.PA_Insertar_Registro_De_Error(JsonConvert.SerializeObject(request), invoker, paramRetcode, paramMensaje);
+					var r = ctx.PA_Insertar_Registro_De_Error(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
