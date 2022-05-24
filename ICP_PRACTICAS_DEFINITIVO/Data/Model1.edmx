@@ -140,33 +140,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Property Name="Sexo" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Eliminado" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="SIDA_EMPRESA_PRUEBA_GONZALO">
-          <Key>
-            <PropertyRef Name="id_usuario" />
-          </Key>
-          <Property Name="id_usuario" Type="int" Nullable="false" />
-          <Property Name="nombre_empresa" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cif" Type="varchar" MaxLength="9" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SIDA_PERSONA_PRUEBA_GONZALO">
-          <Key>
-            <PropertyRef Name="id_usuario" />
-          </Key>
-          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellido2" Type="varchar" MaxLength="50" />
-          <Property Name="fecha_nacimiento" Type="date" />
-        </EntityType>
-        <EntityType Name="SIDA_USUARIO_PRUEBA_GONZALO">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="contrasena" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="nickname" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -380,30 +353,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             </Principal>
             <Dependent Role="Seguidor_Seguido">
               <PropertyRef Name="Seguido" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SIDA_EMPR__id_us__45F365D3">
-          <End Role="SIDA_USUARIO_PRUEBA_GONZALO" Type="Self.SIDA_USUARIO_PRUEBA_GONZALO" Multiplicity="1" />
-          <End Role="SIDA_EMPRESA_PRUEBA_GONZALO" Type="Self.SIDA_EMPRESA_PRUEBA_GONZALO" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SIDA_USUARIO_PRUEBA_GONZALO">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SIDA_EMPRESA_PRUEBA_GONZALO">
-              <PropertyRef Name="id_usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SIDA_PERS__id_us__44FF419A">
-          <End Role="SIDA_USUARIO_PRUEBA_GONZALO" Type="Self.SIDA_USUARIO_PRUEBA_GONZALO" Multiplicity="1" />
-          <End Role="SIDA_PERSONA_PRUEBA_GONZALO" Type="Self.SIDA_PERSONA_PRUEBA_GONZALO" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SIDA_USUARIO_PRUEBA_GONZALO">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SIDA_PERSONA_PRUEBA_GONZALO">
-              <PropertyRef Name="id_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -744,6 +693,20 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
+        <Function Name="PA_Obtener_Experiencia_General" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="PA_Obtener_Experiencia_Por_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
+          <Parameter Name="INVOKER" Type="int" Mode="In" />
+          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
+          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
         <Function Name="PA_Obtener_Experiencias_Por_Empresa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
@@ -993,9 +956,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Seguidor_Seguido" EntityType="Self.Seguidor_Seguido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SIDA_EMPRESA_PRUEBA_GONZALO" EntityType="Self.SIDA_EMPRESA_PRUEBA_GONZALO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SIDA_PERSONA_PRUEBA_GONZALO" EntityType="Self.SIDA_PERSONA_PRUEBA_GONZALO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SIDA_USUARIO_PRUEBA_GONZALO" EntityType="Self.SIDA_USUARIO_PRUEBA_GONZALO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Registro" EntityType="Self.Registro" store:Type="Tables" store:Schema="dbo">
@@ -1068,14 +1028,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <AssociationSet Name="FK__Seguidor___Segui__4A8310C6" Association="Self.FK__Seguidor___Segui__4A8310C6">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Seguidor_Seguido" EntitySet="Seguidor_Seguido" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SIDA_EMPR__id_us__45F365D3" Association="Self.FK__SIDA_EMPR__id_us__45F365D3">
-            <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
-            <End Role="SIDA_EMPRESA_PRUEBA_GONZALO" EntitySet="SIDA_EMPRESA_PRUEBA_GONZALO" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SIDA_PERS__id_us__44FF419A" Association="Self.FK__SIDA_PERS__id_us__44FF419A">
-            <End Role="SIDA_USUARIO_PRUEBA_GONZALO" EntitySet="SIDA_USUARIO_PRUEBA_GONZALO" />
-            <End Role="SIDA_PERSONA_PRUEBA_GONZALO" EntitySet="SIDA_PERSONA_PRUEBA_GONZALO" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -2181,6 +2133,20 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
             <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
             <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Experiencia_General">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PA_Obtener_Experiencia_Por_Id">
+            <Parameter Name="JSON_IN" Mode="In" Type="String" />
+            <Parameter Name="JSON_OUT" Mode="InOut" Type="String" />
+            <Parameter Name="INVOKER" Mode="In" Type="Int32" />
+            <Parameter Name="RETCODE" Mode="InOut" Type="Int32" />
+            <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -2333,36 +2299,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SIDA_EMPRESA_PRUEBA_GONZALO">
-            <EntityTypeMapping TypeName="MeetFeverModel.SIDA_EMPRESA_PRUEBA_GONZALO">
-              <MappingFragment StoreEntitySet="SIDA_EMPRESA_PRUEBA_GONZALO">
-                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-                <ScalarProperty Name="nombre_empresa" ColumnName="nombre_empresa" />
-                <ScalarProperty Name="cif" ColumnName="cif" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SIDA_PERSONA_PRUEBA_GONZALO">
-            <EntityTypeMapping TypeName="MeetFeverModel.SIDA_PERSONA_PRUEBA_GONZALO">
-              <MappingFragment StoreEntitySet="SIDA_PERSONA_PRUEBA_GONZALO">
-                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
-                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
-                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SIDA_USUARIO_PRUEBA_GONZALO">
-            <EntityTypeMapping TypeName="MeetFeverModel.SIDA_USUARIO_PRUEBA_GONZALO">
-              <MappingFragment StoreEntitySet="SIDA_USUARIO_PRUEBA_GONZALO">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
-                <ScalarProperty Name="nickname" ColumnName="nickname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MeetFeverModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -2501,6 +2437,8 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="PA_Obtener_Empresa_General" FunctionName="MeetFeverModel.Store.PA_Obtener_Empresa_General" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Opinion_General" FunctionName="MeetFeverModel.Store.PA_Obtener_Opinion_General" />
           <FunctionImportMapping FunctionImportName="PA_Obtener_Persona_General" FunctionName="MeetFeverModel.Store.PA_Obtener_Persona_General" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencia_General" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencia_General" />
+          <FunctionImportMapping FunctionImportName="PA_Obtener_Experiencia_Por_Id" FunctionName="MeetFeverModel.Store.PA_Obtener_Experiencia_Por_Id" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
