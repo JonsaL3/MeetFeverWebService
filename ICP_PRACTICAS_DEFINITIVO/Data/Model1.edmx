@@ -441,13 +441,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="RETCODE" Type="int" Mode="InOut" />
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
-        <Function Name="PA_Borrado_Logico_MeGusta_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
-          <Parameter Name="INVOKER" Type="int" Mode="In" />
-          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
-          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
-        </Function>
         <Function Name="PA_Borrado_Logico_Opinion_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
@@ -463,13 +456,6 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
         </Function>
         <Function Name="PA_Borrado_Logico_Persona_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
-          <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
-          <Parameter Name="INVOKER" Type="int" Mode="In" />
-          <Parameter Name="RETCODE" Type="int" Mode="InOut" />
-          <Parameter Name="MENSAJE" Type="nvarchar(max)" Mode="InOut" />
-        </Function>
-        <Function Name="PA_Borrado_Logico_seguidor_Por_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="JSON_IN" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="JSON_OUT" Type="nvarchar(max)" Mode="InOut" />
           <Parameter Name="INVOKER" Type="int" Mode="In" />
@@ -2346,11 +2332,9 @@ advertencia 6002: La tabla o vista 'MeetFever.dbo.Registro' no tiene definida ni
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empleado_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Empresa_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Empresa_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Experiencia_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Experiencia_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_MeGusta_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_MeGusta_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Opinion_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Opinion_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Perfil_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Perfil_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Persona_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Persona_Por_ID" />
-          <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_seguidor_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_seguidor_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Logico_Sexo_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Logico_Sexo_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Emoticono_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Emoticono_Por_ID" />
           <FunctionImportMapping FunctionImportName="PA_Borrado_Real_Empleado_Por_ID" FunctionName="MeetFeverModel.Store.PA_Borrado_Real_Empleado_Por_ID" />
