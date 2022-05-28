@@ -187,5 +187,21 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
+		[HttpGet]
+		[Route("ObtenerEmpresasSinRestriccion")]
+		public HttpResponseMessage ObtenerEmpresasSinRestriccion()
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerEmpresasSinRestriccion();
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 }

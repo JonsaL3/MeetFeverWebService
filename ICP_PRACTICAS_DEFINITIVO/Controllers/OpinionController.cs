@@ -205,5 +205,21 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
+		[HttpPost]
+		[Route("ObtenerTodasOpinionesSinRestricciones")]
+		public HttpResponseMessage ObtenerTodasOpinionesSinRestricciones([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTodasOpinionesSinRestricciones(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 }

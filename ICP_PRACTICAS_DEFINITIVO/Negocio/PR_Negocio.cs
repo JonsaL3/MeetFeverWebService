@@ -646,6 +646,33 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerTodasPersonasSinRestriccion()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Personas_Sin_Restriccion(paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 		// Métodos relacionados con empresa
 
 		public DefaultResult ActualizarEmpresa(object request)
@@ -934,6 +961,33 @@ namespace MeetFeverWebService.Negocio
 					int invoker = 1;
 
 					var r = ctx.PA_Obtener_Empresa_General(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerEmpresasSinRestriccion()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Empresas_Sin_Restriccion(paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
@@ -1435,7 +1489,59 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
+		public DefaultResult ObtenerExperienciasPorTitulo(object request)
+		{
+			DefaultResult response = new DefaultResult();
 
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Experiencias_Por_Titulo(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTodasExperienciasSinRestricciones()
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Experiencias_Sin_Restriccion( paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
 
 		// Métodos que tratan las opiniones
 
@@ -1779,6 +1885,33 @@ namespace MeetFeverWebService.Negocio
 					int invoker = 1;
 
 					var r = ctx.PA_Obtener_Opinion_General(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
+		public DefaultResult ObtenerTodasOpinionesSinRestricciones(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Todas_Opiniones_Sin_Restriccion(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
