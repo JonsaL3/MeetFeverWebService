@@ -44,22 +44,6 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
-		[HttpPut]
-		[Route("BorradoLogicoMeGusta")]
-		public HttpResponseMessage BorradoLogicoMeGusta([FromBody] object request)
-		{
-			try
-			{
-				PR_Negocio negocio = new PR_Negocio();
-				var response = negocio.BorradoLogicoMeGusta(request);
-				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
-			}
-			catch (Exception ex)
-			{
-				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
-			}
-		}
-
 		[HttpDelete]
 		[Route("BorradoRealMeGusta")]
 		public HttpResponseMessage BorradoRealMeGusta([FromBody] object request)

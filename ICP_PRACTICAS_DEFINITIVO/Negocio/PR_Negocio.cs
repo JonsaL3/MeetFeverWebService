@@ -1055,33 +1055,6 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 
-		public DefaultResult BorradoLogicoSeguidor(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Borrado_Logico_seguidor_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
 		public DefaultResult BorradoRealSeguidor(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -1327,7 +1300,6 @@ namespace MeetFeverWebService.Negocio
 			return response;
 		}
 		
-
 		public DefaultResult ObtenerTop4ExperienciasMasOpinadas()
 		{
 			DefaultResult response = new DefaultResult();
@@ -1435,6 +1407,34 @@ namespace MeetFeverWebService.Negocio
 
 			return response;
 		}
+
+		public DefaultResult ObtenerExperienciaGeneral(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PA_Obtener_Experiencia_General(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+
 
 
 		// Métodos que tratan las opiniones
@@ -2109,33 +2109,6 @@ namespace MeetFeverWebService.Negocio
 					int invoker = 1;
 
 					var r = ctx.PA_MeGusta(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
-					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
-				}
-			}
-			catch (Exception ex)
-			{
-				response = HandlerException(ex);
-			}
-
-			return response;
-		}
-
-		public DefaultResult BorradoLogicoMeGusta(object request)
-		{
-			DefaultResult response = new DefaultResult();
-
-			try
-			{
-				using (var ctx = new MeetFeverDatos())
-				{
-
-					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
-					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
-					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
-
-					int invoker = 1;
-
-					var r = ctx.PA_Borrado_Logico_MeGusta_Por_ID(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
