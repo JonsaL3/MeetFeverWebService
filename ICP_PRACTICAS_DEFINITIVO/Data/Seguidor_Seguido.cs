@@ -17,7 +17,6 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public int Id { get; set; }
         public int Seguidor { get; set; }
         public int Seguido { get; set; }
-        public bool Eliminado { get; set; }
     
         public virtual Usuario Usuario { get; set; }
         public virtual Usuario Usuario1 { get; set; }

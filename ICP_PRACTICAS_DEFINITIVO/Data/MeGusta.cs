@@ -17,7 +17,6 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public int Id { get; set; }
         public Nullable<int> Id_Opinion { get; set; }
         public Nullable<int> Id_Usuario { get; set; }
-        public Nullable<bool> Eliminado { get; set; }
     
         public virtual Opinion Opinion { get; set; }
         public virtual Usuario Usuario { get; set; }

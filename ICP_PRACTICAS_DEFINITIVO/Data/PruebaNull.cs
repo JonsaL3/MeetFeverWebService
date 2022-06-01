@@ -12,14 +12,9 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class SIDA_USUARIO_PRUEBA_GONZALO
+    public partial class PruebaNull
     {
         public int id { get; set; }
-        public string correo { get; set; }
-        public string contrasena { get; set; }
-        public string nickname { get; set; }
-    
-        public virtual SIDA_EMPRESA_PRUEBA_GONZALO SIDA_EMPRESA_PRUEBA_GONZALO { get; set; }
-        public virtual SIDA_PERSONA_PRUEBA_GONZALO SIDA_PERSONA_PRUEBA_GONZALO { get; set; }
+        public string patata { get; set; }
     }
 }
