@@ -23,6 +23,7 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public string Apellido2 { get; set; }
         public string Dni { get; set; }
         public bool Eliminado { get; set; }
+        public string Id_paypal { get; set; }
     
         public virtual Experiencia Experiencia { get; set; }
         public virtual Persona Persona { get; set; }
