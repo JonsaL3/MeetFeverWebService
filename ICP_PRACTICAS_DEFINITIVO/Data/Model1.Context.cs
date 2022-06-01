@@ -1317,5 +1317,18 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual int PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
     }
 }
