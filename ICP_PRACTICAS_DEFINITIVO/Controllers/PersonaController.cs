@@ -235,5 +235,53 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
+		[HttpGet]
+		[Route("ObtenerTodasPersonasSinBorrado")]
+		public HttpResponseMessage ObtenerTodasPersonasSinBorrado()
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTodasPersonasSinBorrado();
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPut]
+		[Route("ReactivarPersona")]
+		public HttpResponseMessage ReactivarPersona([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ReactivarPersona(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPost]
+		[Route("ObtenerEntradasPorPersona")]
+		public HttpResponseMessage ObtenerEntradasPorPersona([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerEntradasPorPersona(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 }

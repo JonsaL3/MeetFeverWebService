@@ -92,5 +92,37 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
+		[HttpGet]
+		[Route("ObtenerTodosLosSexos")]
+		public HttpResponseMessage ObtenerTodosLosSexosSinBorrado()
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTodosLosSexosSinBorrado();
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPut]
+		[Route("ReactivarSexo")]
+		public HttpResponseMessage ReactivarSexo([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ReactivarSexo(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
 	}
 }

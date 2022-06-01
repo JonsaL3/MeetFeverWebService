@@ -92,6 +92,37 @@ namespace MeetFeverWebService.Controllers
 			}
 		}
 
+		[HttpGet]
+		[Route("ObtenerTodosLosEmoticonosSinBorrado")]
+		public HttpResponseMessage ObtenerTodosLosEmoticonosSinBorrado()
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ObtenerTodosLosEmoticonosSinBorrado();
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
+
+		[HttpPut]
+		[Route("ReactivarEmoticono")]
+		public HttpResponseMessage ReactivarEmoticono([FromBody] object request)
+		{
+			try
+			{
+				PR_Negocio negocio = new PR_Negocio();
+				var response = negocio.ReactivarEmoticono(request);
+				return Request.CreateResponse(HttpStatusCode.OK, new { data = response });
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, new { isError = true, data = ex.Message });
+			}
+		}
 
 	}
 }
