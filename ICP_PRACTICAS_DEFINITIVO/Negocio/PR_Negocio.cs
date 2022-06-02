@@ -318,7 +318,7 @@ namespace MeetFeverWebService.Negocio
 
 			return response;
 		}
-
+		
 		public DefaultResult ObtenerEmpleadosPorIdEmpresa(object request)
 		{
 			DefaultResult response = new DefaultResult();
@@ -335,6 +335,33 @@ namespace MeetFeverWebService.Negocio
 					int invoker = 1;
 
 					var r = ctx.PA_Obtener_Empelados_Por_Empresa(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
+					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
+				}
+			}
+			catch (Exception ex)
+			{
+				response = HandlerException(ex);
+			}
+
+			return response;
+		}
+		
+		public DefaultResult ObtenerVentasPorMesPorIdEmpresa(object request)
+		{
+			DefaultResult response = new DefaultResult();
+
+			try
+			{
+				using (var ctx = new MeetFeverDatos())
+				{
+
+					ObjectParameter paramJsonOUT = new ObjectParameter("JSON_OUT", typeof(string));
+					ObjectParameter paramRetcode = new ObjectParameter("RETCODE", typeof(int));
+					ObjectParameter paramMensaje = new ObjectParameter("MENSAJE", typeof(string));
+
+					int invoker = 1;
+
+					var r = ctx.PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa(JsonConvert.SerializeObject(request), paramJsonOUT, invoker, paramRetcode, paramMensaje);
 					response = HandlerResponse(paramJsonOUT, paramRetcode, paramMensaje);
 				}
 			}
