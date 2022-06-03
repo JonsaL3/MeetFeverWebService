@@ -93,7 +93,7 @@ namespace MeetFeverWebService.Controllers
 		}
 
 		[HttpGet]
-		[Route("ObtenerTodosLosSexos")]
+		[Route("ObtenerTodosLosSexosSinBorrado")]
 		public HttpResponseMessage ObtenerTodosLosSexosSinBorrado()
 		{
 			try

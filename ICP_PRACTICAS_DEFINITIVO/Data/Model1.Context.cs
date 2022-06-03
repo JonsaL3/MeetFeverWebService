@@ -1215,6 +1215,19 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAGA_Todas_Personas_Que_Quizas_Conozca", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     
+        public virtual int PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var jSON_INParameter = jSON_IN != null ?
+                new ObjectParameter("JSON_IN", jSON_IN) :
+                new ObjectParameter("JSON_IN", typeof(string));
+    
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
@@ -1316,19 +1329,6 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual int PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa(string jSON_IN, ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
-        {
-            var jSON_INParameter = jSON_IN != null ?
-                new ObjectParameter("JSON_IN", jSON_IN) :
-                new ObjectParameter("JSON_IN", typeof(string));
-    
-            var iNVOKERParameter = iNVOKER.HasValue ?
-                new ObjectParameter("INVOKER", iNVOKER) :
-                new ObjectParameter("INVOKER", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PAJ_Obtener_Ventas_Agrupadas_Por_Mes_De_Una_Empresa", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
     }
 }
