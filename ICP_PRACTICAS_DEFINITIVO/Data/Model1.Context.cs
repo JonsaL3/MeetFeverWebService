@@ -1365,5 +1365,41 @@ namespace ICP_PRACTICAS_DEFINITIVO.Data
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Borrado_Aprobado_Experiencia_Por_ID", jSON_INParameter, jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
         }
+    
+        public virtual int PA_Empresas_Activas(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Empresas_Activas", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Empresas_Registrados(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Empresas_Registrados", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Personas_Activas(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Personas_Activas", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
+    
+        public virtual int PA_Personas_Registrados(ObjectParameter jSON_OUT, Nullable<int> iNVOKER, ObjectParameter rETCODE, ObjectParameter mENSAJE)
+        {
+            var iNVOKERParameter = iNVOKER.HasValue ?
+                new ObjectParameter("INVOKER", iNVOKER) :
+                new ObjectParameter("INVOKER", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PA_Personas_Registrados", jSON_OUT, iNVOKERParameter, rETCODE, mENSAJE);
+        }
     }
 }
